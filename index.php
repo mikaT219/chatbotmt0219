@@ -1,36 +1,40 @@
 <?php
+require_once __DIR__.'/vendor/autoload.php';
 
-DEFINE("ACCESS_TOKEN","YDD9P7LxFOm4QRxH6k6vvNL4hiJdkZPZdXGr8biDB9RXWEX/RWCBl5JmIXQF/xexMMhDHHryHDiPPyUtiHgFPf7BtaIdK2bXUGTrITBa2loTalSN1zT3JxHBNtSmAQksGy/p4gRk8oHUwlQJXKvuPwdB04t89/1O/w1cDnyilFU=
-");
-DEFINE("SECRET_TOKEN","9478c29d783d6c8208ef8139da883d83");
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
 
-use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
-use \LINE\LINEBot;
-use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
-use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
-use \LINE\LINEBot\Constant\HTTPHeader;
+$signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 
-//LINESDKの読み込み
-require_once(__DIR__."/vendor/autoload.php");
-
-//LINEから送られてきたらtrueになる
-if(isset($_SERVER["HTTP_".HTTPHeader::LINE_SIGNATURE])){
-
-//LINEBOTにPOSTで送られてきた生データの取得
-  $inputData = file_get_contents("php://input");
-
-//LINEBOTSDKの設定
-  $httpClient = new CurlHTTPClient(ACCESS_TOKEN);
-  $Bot = new LINEBot($HttpClient, ['channelSecret' => SECRET_TOKEN]);
-  $signature = $_SERVER["HTTP_".HTTPHeader::LINE_SIGNATURE]; 
-  $Events = $Bot->parseEventRequest($InputData, $Signature);
-
-//大量にメッセージが送られると複数分のデータが同時に送られてくるため、foreachをしている。
-    foreach($Events as $event){
-    $SendMessage = new MultiMessageBuilder();
-    $TextMessageBuilder = new TextMessageBuilder("よろぽん！");
-    $SendMessage->add($TextMessageBuilder);
-    $Bot->replyMessage($event->getReplyToken(), $SendMessage);
-  }
+try {
+    $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
+}
+catch(\LINE\LINEBot\Exception\InvalidSignatureException $e) {
+    error_log("parseEventRequest failed. InvalidSignatureException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
+    error_log("parseEventRequest failed. UnknownEventTypeException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
+    error_log("parseEventRequest failed. UnknownMessageTypeException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
+    error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
 
+
+foreach ($events as $event) {
+    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+        error_log('Non message event has come');
+        continue;
+    }
+
+    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+        error_log('Non text message has come');
+        continue;
+    }
+
+    $bot->replyText($event->getReplyToken(), $event->getText());
+}
+
+?>
