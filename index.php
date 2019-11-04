@@ -24,6 +24,14 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
 
 foreach ($events as $event) {
+  $template = array('type'    => 'carousel',
+                    'columns' => $columns,
+                  );
+
+  $message = array('type'     => 'template',
+                   'altText'  => '代替テキスト',
+                   'template' => $template
+                  );
   $bot->replyText($event->getReplyToken(), $event->getText());
   $columns = array(
                    array('thumbnailImageUrl' => '画像のURL',
@@ -37,15 +45,6 @@ foreach ($events as $event) {
                          'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
                    )
               );
-
-  $template = array('type'    => 'carousel',
-                    'columns' => $columns,
-                  );
-
-  $message = array('type'     => 'template',
-                   'altText'  => '代替テキスト',
-                   'template' => $template
-                  );
 
 
     if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
