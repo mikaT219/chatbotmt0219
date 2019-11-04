@@ -44,8 +44,6 @@ foreach ($events as $event) {
     }
  //オウム返し
     $bot->replyText($event->getReplyToken(), $event->getText());
-
-
 }
 
 
