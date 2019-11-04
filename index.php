@@ -33,7 +33,8 @@ foreach ($events as $event) {
         error_log('Non text message has come');
         continue;
     }
-
+    $message = array('type' => 'text',
+                     'text' => 'こんにちは。テキスト応答ですよ。');
     $bot->replyText($event->getReplyToken(), $event->getText());
 }
 
