@@ -28,6 +28,8 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
 
+
+
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
  // MessageEventクラスのインスタンスでなければ処理をスキップ
@@ -42,19 +44,18 @@ foreach ($events as $event) {
     }
  //オウム返し
     $bot->replyText($event->getReplyToken(), $event->getText());
+
+//confirmテンプレートメッセージを返信
+replyConfirmTemplate($bot,
+  $event->getReplyToken(),
+  'Webで詳しく見ますか？',
+  'Webで詳しく見ますか？',
+  new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder (
+    '見る','http://google.jp'),
+  new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder (
+    '見ない','ignore')
+
 }
 
-//テキストを返信。引数はLINEBot、返信先、テキスト
-function replyTextMessage($bot,$replyToken,$text) {
-  // 返信を行いメッセージを取得
-  // TextMessageBuilderの引数はテキスト
-  $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
-
-  //レスポンスが異常な場合
-  if(!$response->isSucceeded()){
-    //エラー内容を出力
-    error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-  }
-}
 
 ?>
