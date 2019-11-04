@@ -45,15 +45,6 @@ foreach ($events as $event) {
  //オウム返し
     $bot->replyText($event->getReplyToken(), $event->getText());
 
-//confirmテンプレートメッセージを返信
-replyConfirmTemplate($bot,
-  $event->getReplyToken(),
-  'Webで詳しく見ますか？',
-  'Webで詳しく見ますか？',
-  new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder (
-    '見る','http://google.jp'),
-  new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder (
-    '見ない','ignore')
 
 }
 
