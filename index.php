@@ -24,6 +24,30 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
 
 foreach ($events as $event) {
+  $bot->replyText($event->getReplyToken(), $event->getText());
+  $columns = array(
+                   array('thumbnailImageUrl' => '画像のURL',
+                         'title'   => 'タイトル最大４０文字',
+                         'text'    => 'タイトルか画像がある場合は最大60文字、どちらもない場合は最大120文字',
+                         'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
+                   ),
+                   array('thumbnailImageUrl' => '画像のURL',
+                         'title'   => 'タイトル最大４０文字',
+                         'text'    => 'タイトルか画像がある場合は最大60文字、どちらもない場合は最大120文字',
+                         'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
+                   )
+              );
+
+  $template = array('type'    => 'carousel',
+                    'columns' => $columns,
+                  );
+
+  $message = array('type'     => 'template',
+                   'altText'  => '代替テキスト',
+                   'template' => $template
+                  );
+
+
     if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
         error_log('Non message event has come');
         continue;
@@ -33,30 +57,6 @@ foreach ($events as $event) {
         error_log('Non text message has come');
         continue;
     }
-
-    $bot->replyText($event->getReplyToken(), $event->getText());
-    $columns = array(
-                     array('thumbnailImageUrl' => '画像のURL',
-                           'title'   => 'タイトル最大４０文字',
-                           'text'    => 'タイトルか画像がある場合は最大60文字、どちらもない場合は最大120文字',
-                           'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
-                     ),
-                     array('thumbnailImageUrl' => '画像のURL',
-                           'title'   => 'タイトル最大４０文字',
-                           'text'    => 'タイトルか画像がある場合は最大60文字、どちらもない場合は最大120文字',
-                           'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
-                     )
-                );
-
-    $template = array('type'    => 'carousel',
-                      'columns' => $columns,
-                    );
-
-    $message = array('type'     => 'template',
-                     'altText'  => '代替テキスト',
-                     'template' => $template
-                    );
-
 
 }
 
