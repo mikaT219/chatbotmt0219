@@ -43,9 +43,9 @@ foreach ($events as $event) {
         continue;
     }
     //オウム返し
-    $bot->replyText($event->getReplyToken(), $event->getText());
-
-
+    //$bot->replyText($event->getReplyToken(), $event->getText());
+    $bot = "taguchi";
+    $s1 = "hello $bot\nhello again";
 }
 
 
