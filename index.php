@@ -49,14 +49,9 @@ foreach ($events as $event) {
     //オウム返し
     //$bot->replyText($event->getReplyToken(), $event->getText());
 
-    //画像を返信。引数はLINEBot、返信先、画像URL、サムネイルURL
-function replyImageMessage($bot,$replyToken,$originalImageUrl,$previewImageUrl){
-  // ImageMessageBuilderの引数は画像URL、サムネイルURL
-  $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder($originalImageUrl, $previewImageUrl));
-  if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-  }
-}
+    $message = array('type'      => 'sticker',
+                     'packageId' => 1,
+                     'stickerId' => 1);
 
 
 }
