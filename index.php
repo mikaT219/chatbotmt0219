@@ -60,7 +60,7 @@ foreach ($events as $event) {
       $actionArray = array();
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
-      array_push ($actionArray, new LINE\LINEBot\Templa3eActionBuilder\MessageTemplateActionBuilder(
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
