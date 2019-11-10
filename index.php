@@ -37,7 +37,7 @@ foreach ($events as $event) {
       //  error_log('Non message event has come');
       //  continue;
     //テキストを返信し次のイベントへ
-    replyTextMessage($bot, $event->getReplyToken(), 'こんにちは、テキスト送信ですよ');
+    replyTextMessage($bot, $event->getReplyToken(), $event->getText());
     }
  // TextMessageBuilderクラスのインスタンスでなければ処理をスキップ
     //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
