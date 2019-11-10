@@ -44,7 +44,7 @@ foreach ($events as $event) {
     }
 
     //ハロー返し
-    $bot->replyText($event->getReplyToken(), 'こんにちは、テキスト送信ですよ');
+    //$bot->replyText($event->getReplyToken(), 'こんにちは、テキスト送信ですよ');
 
     //オウム返し
     //$bot->replyText($event->getReplyToken(), $event->getText());
