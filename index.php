@@ -48,7 +48,7 @@ foreach ($events as $event) {
       //replyTextMessage($bot, $event->getReplyToken(), $event->getText());
 
   //画像を返信
-      replyTextMessage($bot, $event->getReplyToken(),'https://'.
+      replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               $_SERVER['HTTP_HOST'].
                               '/imgs/download2.jpg',
                               'https://'.$_SERVER['HTTP_HOST'].
