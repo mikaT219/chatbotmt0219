@@ -65,15 +65,15 @@ foreach ($events as $event) {
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
       $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-        ($i + 1).'後の天気',
-        '晴れ',
+        ($i + 1).'セレクト',
+        '指輪',
         'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
         $actionArray
       );
       //追加
       array_push($columnArray, $column);
       }
-      replyCarouselTemplate($bot, $event->getReplyToken(),'今後の天気',$columnArray);
+      replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
     }
 
 
