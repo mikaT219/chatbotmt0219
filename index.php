@@ -58,13 +58,13 @@ foreach ($events as $event) {
       for ($i =0; $i<5; $i++) {
       //アクションの配列
       $actionArray = array();
-      array_push ($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder(
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
-      array_push ($actionArray, new LINE\LINEBOT\Templa3eActionBuilde3\MessageTemplateActionBuilder(
+      array_push ($actionArray, new LINE\LINEBot\Templa3eActionBuilde3\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
-      array_push ($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder(
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
-      $column = new LINE\LINEBOT\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder (
+      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder (
         ($i + 1).'後の天気',
         '晴れ',
         'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
