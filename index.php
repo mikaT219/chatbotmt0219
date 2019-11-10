@@ -50,9 +50,9 @@ foreach ($events as $event) {
   //画像を返信
       replyTextMessage($bot, $event->getReplyToken(),'https://'.
                               $_SERVER['HTTP_HOST'].
-                              'imgs/download1.jpg',
+                              '/imgs/download1.jpg',
                               'https://'.$_SERVER['HTTP_HOST'].
-                              'imgs/download2.jpg');
+                              '/imgs/download2.jpg');
       }
 
 
