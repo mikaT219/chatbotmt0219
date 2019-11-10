@@ -33,15 +33,17 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
  // MessageEventクラスのインスタンスでなければ処理をスキップ
-    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-        error_log('Non message event has come');
-        continue;
+    //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+      //  error_log('Non message event has come');
+      //  continue;
+    //テキストを返信し次のイベントへ
+    replyTextMessage($bot, $event->getReplyToken(), 'こんにちは、テキスト送信ですよ');
     }
  // TextMessageBuilderクラスのインスタンスでなければ処理をスキップ
-    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-        error_log('Non text message has come');
-        continue;
-    }
+    //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+        //error_log('Non text message has come');
+        //continue;
+    //}
 
     //ハロー返し
     //$bot->replyText($event->getReplyToken(), 'こんにちは、テキスト送信ですよ');
@@ -61,8 +63,5 @@ foreach ($events as $event) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-}
-
-
 
 ?>
