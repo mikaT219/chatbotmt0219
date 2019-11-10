@@ -56,7 +56,7 @@ foreach ($events as $event) {
   //ダイアログの配列
       $columnArray = array();
 
-      for ($i =0; $i<5, $i++) {
+      for ($i =0; $i<5; $i++) {
       $actionArray = array();
       array_push =($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder
       ('ボタン'.$i.'-'.1,'c-'.$i.'-'.1));
