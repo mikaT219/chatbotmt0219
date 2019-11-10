@@ -41,8 +41,7 @@ foreach ($events as $event) {
     //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
         //error_log('Non text message has come');
         //continue;
-        //オウム返し
-        //$bot->replyText($event->getReplyToken(), $event->getText());
+
 
   //テキストを返信し次のイベントへ
       replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
