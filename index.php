@@ -45,10 +45,10 @@ foreach ($events as $event) {
         //$bot->replyText($event->getReplyToken(), $event->getText());
 
   //テキストを返信し次のイベントへ
-      //replyTextMessage($bot, $event->getReplyToken(), $event->getText());
+      replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
 
   //画像を返信
-      replyImageMessage($bot, $event->getReplyToken(),'https://'.
+      //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               $_SERVER['HTTP_HOST'].
                               '/imgs/download1.jpg',
                               'https://'.$_SERVER['HTTP_HOST'].
