@@ -64,7 +64,7 @@ foreach ($events as $event) {
         'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
-      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder (
+      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
         ($i + 1).'後の天気',
         '晴れ',
         'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
