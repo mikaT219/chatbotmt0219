@@ -55,7 +55,7 @@ foreach ($events as $event) {
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
       $columnArray = array();
-      for ($i =0; $i<5; $i++) {
+      for ($i =0; $i<3; $i++) {
       //アクションの配列
       $actionArray = array();
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
