@@ -58,12 +58,12 @@ foreach ($events as $event) {
 
       for ($i =0; $i<5; $i++) {
       $actionArray = array();
-      array_push ($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder
-      ('ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
-      array_push ($actionArray, new LINE\LINEBOT\Templa3eActionBuilde3\MessageTemplateActionBuilder
-      ('ボタン' .$i . '-' . 2, 'c-' .$i .'-'. 2));
-      array_push ($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder
-      ('ボタン' .$i . '-' . 3, 'c-' .$i .'-'. 3));
+      array_push ($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder(
+        'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
+      array_push ($actionArray, new LINE\LINEBOT\Templa3eActionBuilde3\MessageTemplateActionBuilder(
+        'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
+      array_push ($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder(
+        'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
       $column = new LINE\LINEBOT\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder (
         ($i + 1).'後の天気',
         '晴れ',
