@@ -45,10 +45,15 @@ foreach ($events as $event) {
 
     //オウム返し
     //$bot->replyText($event->getReplyToken(), $event->getText());
-    $bot->replyText($event->getReplyToken(), 'TextMessage');
-    //function replyTextMessage($bot, $replyToken, $text){
-      //$responce= $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
-    //}
+    //$bot->replyText($event->getReplyToken(), 'TextMessage');
+    function replyTextMessage($bot, $replyToken, $text){
+      $response= $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+
+    //レスポンスが異常な場合
+    if (!$response->isSucceeded()){
+    //エラー出力
+        errorl_log('Failed!');
+    }
 }
 
 
