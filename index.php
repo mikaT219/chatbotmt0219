@@ -45,7 +45,10 @@ foreach ($events as $event) {
 
     //オウム返し
     //$bot->replyText($event->getReplyToken(), $event->getText());
-    $bot->replyText($event->getReplyToken(), 'TextMessage');
+    //$bot->replyText($event->getReplyToken(), 'TextMessage');
+    function replyTextMessage($bot, $replyToken, $text){
+      $responce= $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+    }
 }
 
 
