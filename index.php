@@ -54,9 +54,10 @@ foreach ($events as $event) {
 
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
-      columnArray = array();
-      for ($i =0; $i<5, $i++) {
+      $columnArray = array();
 
+      for ($i =0; $i<5, $i++) {
+      $actionArray = array();
       array_push =($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder
       ('ボタン'.$i.'-'.1,'c-'.$i.'-'.1));
       array_push =($actionArray, new LINE\LINEBOT\Templa3eActionBuilde3\MessageTemplateActionBuilder
@@ -68,6 +69,7 @@ foreach ($events as $event) {
         '晴れ',
         'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
         $actionArray);
+      //に追加
       array_push($columnArray, $column);
       }
       replyCarouselTemplate($bot, $event->getReplyToken(),'今後の天気',$columnArray);
