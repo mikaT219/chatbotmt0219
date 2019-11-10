@@ -105,7 +105,7 @@ foreach ($events as $event) {
       $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
         $alternativeText,
         // Carouselテンプレートの引数はダイアログの配列
-        new \LINE\LINEBot\MessageBuilder\CarouselTemplateBuilder($columnArray)
+        new \LINE\LINEBot\MessageBuilder\CarouselColumnTemplateBuilder($columnArray)
       );
       $response = $bot->replyMessage($replyToken, $builder);
       if(!$response->isSucceeded()){
