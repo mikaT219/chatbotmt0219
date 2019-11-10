@@ -42,9 +42,8 @@ foreach ($events as $event) {
         //error_log('Non text message has come');
         //continue;
 
-
   //テキストを返信し次のイベントへ
-      replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
+      //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
 
   //画像を返信
       //replyImageMessage($bot, $event->getReplyToken(),'https://'.
@@ -52,7 +51,27 @@ foreach ($events as $event) {
                               //'/imgs/download1.jpg',
                               //'https://'.$_SERVER['HTTP_HOST'].
                               //'/imgs/download2.jpg');
+
+  //カルーセルテンプレートメッセージを返信
+  //ダイアログの配列
+      columnArray = array();
+      for ($i =0; $i<5, $i++) {
+
+      array_push =($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder
+      ('ボタン'.$i.'-'.1,'c-'.$i.'-'.1));
+      array_push =($actionArray, new LINE\LINEBOT\Templa3eActionBuilde3\MessageTemplateActionBuilder
+      ('ボタン'.$i.'-'.2,'c-'.$i.'-'.2));
+      array_push =($actionArray, new LINE\LINEBOT\TemplateActionBuilder\MessageTemplateActionBuilder
+      ('ボタン'.$i.'-'.3,'c-'.$i.'-'.3));
+      $column = new LINE\LINEBOT\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder (
+        ($i + 1).'後の天気',
+        '晴れ',
+        'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+        $actionArray);
+      array_push($columnArray, $column);
       }
+      replyCarouselTemplate($bot, $event->getReplyToken(),'今後の天気',$columnArray);
+    }
 
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
@@ -76,6 +95,21 @@ foreach ($events as $event) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
+
+    //Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
+    //ダイアログの配列
+    function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
+      $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+        $alternativeText,
+        // Carouselテンプレートの引数はダイアログの配列
+        new \LINE\LINEBot\MessageBuilder\CarouselTemplateBuilder($columnArray)
+      );
+      $response = $bot->replyMessage($replyToken, $builder);
+      if(!$response->isSucceeded()){
+        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+      }
+    }
+
 
 
 ?>
