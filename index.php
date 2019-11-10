@@ -42,9 +42,10 @@ foreach ($events as $event) {
         error_log('Non text message has come');
         continue;
     }
-    //オウム返し
-    $bot->replyText($event->getReplyToken(), $event->getText());
 
+    //オウム返し
+    //$bot->replyText($event->getReplyToken(), $event->getText());
+    $bot->replyText($event->getReplyToken(), 'TextMessage');
 }
 
 
