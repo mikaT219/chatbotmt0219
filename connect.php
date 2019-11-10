@@ -1,4 +1,15 @@
 <?php
+//Composerでインストールしたライブラリを一括読み込み
+require_once __DIR__.'/vendor/autoload.php';
+
+// アクセストークンを使いCurlHTTPClientをインスタンス化
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
+// CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
+
+// LINE Messaging APIがリクエストに付与した署名を取得
+$signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+
 //host,user,pass,dbname
 $link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd24f08d0', 'heroku_1ac9c94b4480f8f');
 
@@ -10,7 +21,7 @@ if (mysqli_connect_errno()) {
 }
 
 // userテーブルの全てのデータを取得する
-$query = "SELECT * FROM cardinfo;";
+$query = "SELECT ID FROM cardinfo;";
 
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
