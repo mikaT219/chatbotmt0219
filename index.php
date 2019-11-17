@@ -29,32 +29,11 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
 
-//host,user,pass,dbname
-$link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd24f08d0', 'heroku_1ac9c94b4480f8f');
-
-// 接続状況をチェックします
-if (mysqli_connect_errno()) {
-    die("データベースに接続できません:" . mysqli_connect_error() . "\n");
-} else {
-    echo "データベースの接続に成功しました。\n";
-}
-
-// userテーブルの全てのデータを取得する
-$query = "SELECT DataColumn FROM cardinfo;";
-
-// クエリを実行します。
-if ($result = mysqli_query($link, $query)) {
-    echo "SELECT に成功しました。\n";
-      foreach ($result as $row) {
-          echo $row['DataColumn'].'<br />';
-          $res = print_r($row, true);
-          echo $res;
-        //配列に格納された各イベントをループで処理
-        foreach ($events as $event) {
-        $res = 'こっこ';
-        //テキストを返信し次のイベントへ
-        //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
-        replyTextMessage($bot, $event->getReplyToken(), $event-> $res.'なの？');
+  //配列に格納された各イベントをループで処理
+  foreach ($events as $event) {
+  //テキストを返信し次のイベントへ
+  //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
+  replyTextMessage($bot, $event->getReplyToken(), $event-> $res.'なの？');
   //画像を返信
       //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               //$_SERVER['HTTP_HOST'].
@@ -85,8 +64,6 @@ if ($result = mysqli_query($link, $query)) {
       //}
       //replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
     }
-  }
-}
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {

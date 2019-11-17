@@ -30,7 +30,8 @@ if ($result = mysqli_query($link, $query)) {
         echo $row['DataColumn'].'<br />';
         //var_dump($row);
         //public $res;
-        //$res = print_r($result, TRUE);
+        $res = print_r($result, TRUE);
+        echo $res;
     }
 }
 
