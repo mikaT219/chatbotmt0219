@@ -50,12 +50,9 @@ if ($result = mysqli_query($link, $query)) {
         //var_dump($row);
         //public $res;
         //$res = print_r($result, TRUE);
-    }
-}
 
-
-//配列に格納された各イベントをループで処理
-foreach ($events as $event) {
+        //配列に格納された各イベントをループで処理
+        foreach ($events as $event) {
  // MessageEventクラスのインスタンスでなければ処理をスキップ
     //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
         //error_log('Non message event has come');
@@ -66,9 +63,9 @@ foreach ($events as $event) {
         //error_log('Non text message has come');
         //continue;
 
-  //テキストを返信し次のイベントへ
-    //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
-    replyTextMessage($bot, $event->getReplyToken(), $event-> $row['DataColumn'].'なの？');
+        //テキストを返信し次のイベントへ
+        //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
+        replyTextMessage($bot, $event->getReplyToken(), $event-> $row['DataColumn'].'なの？');
   //画像を返信
       //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               //$_SERVER['HTTP_HOST'].
@@ -99,7 +96,8 @@ foreach ($events as $event) {
       //}
       //replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
     }
-
+  }
+}
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
