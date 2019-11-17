@@ -45,21 +45,19 @@ $query = "SELECT DataColumn FROM cardinfo;";
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
-    foreach ($result as $row) {
-        echo $row['DataColumn'].'<br />';
-        //var_dump($row);
-        //public $res;
-        $res = print_r($result, TRUE);
+      foreach ($result as $row) {
+          echo $row['DataColumn'].'<br />';
+          $res = print_r($row, TRUE);
 
         //配列に格納された各イベントをループで処理
         foreach ($events as $event) {
- // MessageEventクラスのインスタンスでなければ処理をスキップ
-    //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-        //error_log('Non message event has come');
-        //continue;
+        // MessageEventクラスのインスタンスでなければ処理をスキップ
+        //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+          //error_log('Non message event has come');
+          //continue;
 
- // TextMessageBuilderクラスのインスタンスでなければ処理をスキップ
-    //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+          // TextMessageBuilderクラスのインスタンスでなければ処理をスキップ
+          //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
         //error_log('Non text message has come');
         //continue;
 
