@@ -46,34 +46,34 @@ foreach ($events as $event) {
       //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
 
   //画像を返信
-      //replyImageMessage($bot, $event->getReplyToken(),'https://'.
-                              //$_SERVER['HTTP_HOST'].
-                              //'/imgs/download1.jpg',
-                              //'https://'.$_SERVER['HTTP_HOST'].
-                              //'/imgs/download2.jpg');
+      replyImageMessage($bot, $event->getReplyToken(),'https://'.
+                              $_SERVER['HTTP_HOST'].
+                              '/imgs/download1.jpg',
+                              'https://'.$_SERVER['HTTP_HOST'].
+                              '/imgs/download2.jpg');
 
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
-      $columnArray = array();
-      for ($i =0; $i<2; $i++) {
-      //アクションの配列
-      $actionArray = array();
-      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
-      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
+      //$columnArray = array();
+      //for ($i =0; $i<2; $i++) {
+      ////アクションの配列
+      //$actionArray = array();
+      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        //'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
+      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        //'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
       //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
-      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-        ($i + 1).'セレクト',
-        '指輪',
-        'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-        $actionArray
-      );
-      //追加
-      array_push($columnArray, $column);
-      }
-      replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
+      //$column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+        //($i + 1).'セレクト',
+        //'指輪',
+        //'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+        //$actionArray
+      //);
+      ////追加
+      //array_push($columnArray, $column);
+      //}
+      //replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
     }
 
 
@@ -113,7 +113,5 @@ foreach ($events as $event) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-
-
 
 ?>
