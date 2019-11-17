@@ -86,7 +86,7 @@ class TextMessageBuilder implements MessageBuilder
             $this->message[] = [
                 'type' => MessageType::TEXT,
                 //'text' => $text,
-                'text' => $res,
+                'text' => $res
             ];
         }
 
