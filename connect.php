@@ -20,7 +20,6 @@ if (mysqli_connect_errno()) {
     echo "データベースの接続に成功しました。\n";
 }
 
-
 // userテーブルの全てのデータを取得する
 $query = "SELECT DataColumn FROM cardinfo;";
 
@@ -28,7 +27,7 @@ $query = "SELECT DataColumn FROM cardinfo;";
 if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
-        echo $row['DataColumn'].'<br />';        
+        echo $row['DataColumn'].'<br />';
         //var_dump($row);
         //public $res;
         //$res = print_r($result, TRUE);
