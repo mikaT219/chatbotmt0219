@@ -20,6 +20,7 @@ if (mysqli_connect_errno()) {
     echo "データベースの接続に成功しました。\n";
 }
 
+
 // userテーブルの全てのデータを取得する
 $query = "SELECT DataColumn FROM cardinfo;";
 
