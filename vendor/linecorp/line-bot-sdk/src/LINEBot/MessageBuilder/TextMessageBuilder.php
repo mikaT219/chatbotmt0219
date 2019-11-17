@@ -85,7 +85,8 @@ class TextMessageBuilder implements MessageBuilder
         foreach ($this->texts as $text) {
             $this->message[] = [
                 'type' => MessageType::TEXT,
-                'text' => $text,
+                //'text' => $text,
+                'text' => $res,
             ];
         }
 
