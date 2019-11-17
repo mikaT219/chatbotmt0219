@@ -28,7 +28,8 @@ $query = "SELECT DataColumn FROM cardinfo;";
 if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
-        var_dump($row);
+        echo $row['DataColumn'].'<br />';        
+        //var_dump($row);
         //public $res;
         //$res = print_r($result, TRUE);
     }
