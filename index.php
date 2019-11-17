@@ -43,14 +43,14 @@ foreach ($events as $event) {
         //continue;
 
   //テキストを返信し次のイベントへ
-      //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
+      replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
 
   //画像を返信
-      replyImageMessage($bot, $event->getReplyToken(),'https://'.
-                              $_SERVER['HTTP_HOST'].
-                              '/imgs/download1.jpg',
-                              'https://'.$_SERVER['HTTP_HOST'].
-                              '/imgs/download2.jpg');
+      //replyImageMessage($bot, $event->getReplyToken(),'https://'.
+                              //$_SERVER['HTTP_HOST'].
+                              //'/imgs/download1.jpg',
+                              //'https://'.$_SERVER['HTTP_HOST'].
+                              //'/imgs/download2.jpg');
 
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
