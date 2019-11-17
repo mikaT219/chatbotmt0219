@@ -47,7 +47,7 @@ if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
       foreach ($result as $row) {
           echo $row['DataColumn'].'<br />';
-          $res = print_r($row, TRUE);
+          $res = print_r($row);
           echo $res;
         //配列に格納された各イベントをループで処理
         foreach ($events as $event) {
