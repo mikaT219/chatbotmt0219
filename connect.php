@@ -23,7 +23,7 @@ if (mysqli_connect_errno()) {
 
 // userテーブルの全てのデータを取得する
 //$id = '4';
-$id = $event->getText();
+$id = getText();
 echo $id;
 $query = "SELECT DataColumn FROM cardinfo where id = $id;";
 
