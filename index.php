@@ -49,7 +49,7 @@ if ($result = mysqli_query($link, $query)) {
         echo $row['DataColumn'].'<br />';
         //var_dump($row);
         //public $res;
-        //$res = print_r($result, TRUE);
+        $res = print_r($result, TRUE);
 
         //配列に格納された各イベントをループで処理
         foreach ($events as $event) {
@@ -65,7 +65,7 @@ if ($result = mysqli_query($link, $query)) {
 
         //テキストを返信し次のイベントへ
         //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
-        replyTextMessage($bot, $event->getReplyToken(), $event-> $row['DataColumn'].'なの？');
+        replyTextMessage($bot, $event->getReplyToken(), $event-> $res.'なの？');
   //画像を返信
       //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               //$_SERVER['HTTP_HOST'].
