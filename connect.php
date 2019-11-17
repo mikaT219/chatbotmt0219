@@ -23,8 +23,14 @@ if (mysqli_connect_errno()) {
 
 // userテーブルの全てのデータを取得する
 //$id = '4';
-$id = getText();
-echo $id;
+
+//配列に格納された各イベントをループで処理
+foreach ($events as $event) {
+  //テキストを返信し次のイベントへ
+  $id = $event->getText();
+  echo $id;
+}
+
 $query = "SELECT DataColumn FROM cardinfo where id = $id;";
 
 // クエリを実行します。
