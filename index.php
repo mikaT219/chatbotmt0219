@@ -32,7 +32,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
 
 //配列に格納された各イベントをループで処理
-foreach ($events as $event) {
+//foreach ($events as $event) {
  // MessageEventクラスのインスタンスでなければ処理をスキップ
     //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
         //error_log('Non message event has come');
@@ -45,7 +45,7 @@ foreach ($events as $event) {
 
   //テキストを返信し次のイベントへ
     //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
-     replyTextMessage($bot, $event->getReplyToken(), $event->$res.'なの？');
+    // replyTextMessage($bot, $event->getReplyToken(), $event->$res.'なの？');
   //画像を返信
       //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               //$_SERVER['HTTP_HOST'].

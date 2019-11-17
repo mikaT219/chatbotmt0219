@@ -30,14 +30,12 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 }
 
 
-
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
       //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
      replyTextMessage($bot, $event->getReplyToken(), $event->$res.'なの？');
     }
-
 
 //テキストを返信。引数はLINEBot、返信先、テキスト
 function replyTextMessage($bot,$replyToken,$text) {
