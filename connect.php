@@ -1,6 +1,7 @@
 <?php
 //Composerでインストールしたライブラリを一括読み込み
 require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__.'/vendor/linecorp/line-bot-sdk/src/LINEBot/Event/MessageEvent/TextMessage.php';
 
 // アクセストークンを使いCurlHTTPClientをインスタンス化
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
@@ -21,7 +22,9 @@ if (mysqli_connect_errno()) {
 }
 
 // userテーブルの全てのデータを取得する
-$id = '4';
+//$id = '4';
+$id = $event->getText();
+echo $id;
 $query = "SELECT DataColumn FROM cardinfo where id = $id;";
 
 // クエリを実行します。
