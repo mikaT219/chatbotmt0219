@@ -29,8 +29,8 @@ if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
         var_dump($row);
-        public $res;
-        $res = print_r($result, TRUE);
+        //public $res;
+        //$res = print_r($result, TRUE);
     }
 }
 
