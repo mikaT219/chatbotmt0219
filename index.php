@@ -33,7 +33,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
-  replyTextMessage($bot, $event->getReplyToken(), $event-> $res.'なの？');
+  replyTextMessage($bot, $event->getReplyToken(), 'なの？');
   //画像を返信
       //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                               //$_SERVER['HTTP_HOST'].
