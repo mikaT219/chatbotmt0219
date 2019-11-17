@@ -75,7 +75,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       //array_push($columnArray, $column);
       //}
       //replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
-    }
+    //}
 
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
