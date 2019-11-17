@@ -51,7 +51,7 @@ if ($result = mysqli_query($link, $query)) {
           echo $res;
         //配列に格納された各イベントをループで処理
         foreach ($events as $event) {
-
+        $res = 'こっこ';
         //テキストを返信し次のイベントへ
         //replyTextMessage($bot, $event->getReplyToken(), $event->getText().'なの？');
         replyTextMessage($bot, $event->getReplyToken(), $event-> $res.'なの？');
