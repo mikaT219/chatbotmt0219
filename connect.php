@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
 }
 
 // userテーブルの全てのデータを取得する
-$query = "SELECT DataColumn FROM cardinfo;";
+$query = "SELECT DataColumn FROM cardinfo where id = '4';";
 
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
