@@ -51,7 +51,7 @@ if ($result = mysqli_query($link, $query)) {
     //foreach ($users as $row) {
     foreach ($result as $row) {
         //$res->show();
-        //$res = print_r($row,true);
+        $res = print_r($row,true);
         //$res = print $row;
         echo $res;
     }
