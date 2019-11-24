@@ -41,7 +41,7 @@ if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
         //$res = print_r($row,true);
-        $res = print($row);
+        $res = print(string $row);
         echo $res;
     }
 }
