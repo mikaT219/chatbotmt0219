@@ -41,7 +41,7 @@ if ($result = mysqli_query($link, $query)) {
     foreach ($result as $row) {
         //echo $row['DataColumn'].'<br />';
         //echo $row['DataColumn'];
-        $res = $id.print_r($row,true);
+        $res = $id.'は'.print_r($row,true);
         //$res = var_dump($row);
         echo $res;
     }
