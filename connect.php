@@ -39,11 +39,8 @@ $query = "SELECT DataColumn FROM cardinfo where id = $id;";
 if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     //foreach ($result as $row) {
-    foreach ($result as $row => $id) {
-        //echo $row['DataColumn'].'<br />';
-        //echo $row['DataColumn'];
-        $res = $id.'は'.$row;
-        //$res = var_dump($row);
+    foreach ($result as $row) {
+        $res = $id.'は'.print_r($row,true);
         echo $res;
     }
 }
