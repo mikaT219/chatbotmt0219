@@ -33,14 +33,25 @@ foreach ($events as $event) {
   echo $id;
 }
 
+class User {
+  public $id;
+  public $name;
+  public $score;
+  public function show() {
+    echo "$this->name($this->score)";
+    }
+  }
 //$query = "SELECT DataColumn FROM cardinfo where id = $id;";
 $query = "SELECT feeling,details FROM recmmend_table where id = $id;";
 
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
-    echo "SELECT に成功しました。\n";
-    foreach ($result as $row) {
-        $res = print_r($row,true);
+    //echo "SELECT に成功しました。\n";
+    $users = $result->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($users as $row) {
+    //foreach ($result as $row) {
+        $res->show();
+        //$res = print_r($row,true);
         //$res = print $row;
         echo $res;
     }
