@@ -42,9 +42,9 @@ if ($result = mysqli_query($link, $query)) {
     //foreach ($result as $row) {
         //$res = print_r($row,true);
         //echo $res;
+        //}
     $res = print_r($result,true);
     echo $res;
-    }
 }
 
 // 接続を閉じます
