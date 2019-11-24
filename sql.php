@@ -12,7 +12,8 @@ require_once __DIR__.'/vendor/linecorp/line-bot-sdk/src/LINEBot/Event/MessageEve
 //$signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 
 //host,user,pass,dbname
-$link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd24f08d0', 'heroku_1ac9c94b4480f8f','utf-8');
+//$link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd24f08d0', 'heroku_1ac9c94b4480f8f','utf-8');
+$link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd24f08d0', 'heroku_1ac9c94b4480f8f');
 
 //$events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
 
@@ -23,7 +24,7 @@ if (mysqli_connect_errno()) {
     echo "データベースの接続に成功しました。\n";
 
 
-$query = "SELECT title,details FROM recmmend_table where id = 1;";
+$query = "SELECT title,details FROM recmmend_table where id = 4;";
 
 //echo $query;
 
@@ -31,9 +32,12 @@ $query = "SELECT title,details FROM recmmend_table where id = 1;";
 if ($result = mysqli_query($link, $query)) {
     //echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
-        $str = mb_convert_encoding($row,"utf-8","sjis");
-        $res = print_r($str,true);
+        //$str = mb_convert_encoding($row,"utf-8","sjis");
+        //$res = print_r($str,true);
+        $res = $row["title"];
         echo $res;
+        //echo $row["title"];
+
     }
 }
 }
