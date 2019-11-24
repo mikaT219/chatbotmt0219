@@ -40,8 +40,8 @@ $query = "SELECT details,feeling FROM recmmend_table where id = $id;";
 if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
-        //$res = print_r($row,true);
-        $res = print $row;
+        $res = print_r($row,true);
+        //$res = print $row;
         echo $res;
     }
 }
