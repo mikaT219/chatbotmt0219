@@ -47,10 +47,10 @@ $query = "SELECT feeling,details FROM recmmend_table where id = $id;";
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
     //echo "SELECT に成功しました。\n";
-    $users = $result->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($users as $row) {
-    //foreach ($result as $row) {
-        $res->show();
+    //$users = $result->fetchAll(PDO::FETCH_ASSOC);
+    //foreach ($users as $row) {
+    foreach ($result as $row) {
+        //$res->show();
         //$res = print_r($row,true);
         //$res = print $row;
         echo $res;
