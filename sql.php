@@ -21,11 +21,11 @@ $link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd2
 if (mysqli_connect_errno()) {
     die("データベースに接続できません:" . mysqli_connect_error() . "\n");
 } else {
-    echo "データベースの接続に成功しました。\n";
+    echo "データベースの接続に成功しました。"."\n";
 
 
-$query = "SELECT title,details FROM recmmend_table where id = 4;";
-
+//$query = "SELECT title,details FROM recmmend_table where id = 4;";
+$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE 'be impress' ORDER BY rand() LIMIT 3;";
 //echo $query;
 
 // クエリを実行します。
@@ -34,7 +34,7 @@ if ($result = mysqli_query($link, $query)) {
     foreach ($result as $row) {
         //$str = mb_convert_encoding($row,"utf-8","sjis");
         //$res = print_r($str,true);
-        $res = $row["title"];
+        $res = $row["title"].",".$row["details"]."\n";
         echo $res;
         //echo $row["title"];
 

@@ -37,7 +37,7 @@ $query = "SELECT title,details FROM recmmend_table where id = $id;";
 if ($result = mysqli_query($link, $query)) {
     //echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
-        $res = $row["title"].$row["details"];
+        $res = $row["title"].",".$row["details"]."\n";
         echo $res;
     }
 }
