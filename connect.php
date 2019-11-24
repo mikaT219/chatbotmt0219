@@ -33,7 +33,8 @@ foreach ($events as $event) {
   echo $id;
 }
 
-$query = "SELECT DataColumn FROM cardinfo where id = $id;";
+//$query = "SELECT DataColumn FROM cardinfo where id = $id;";
+$query = "SELECT title FROM recmmend_table where feeling = $id;";
 
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
