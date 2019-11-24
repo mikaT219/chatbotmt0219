@@ -27,12 +27,13 @@ if (mysqli_connect_errno()) {
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
-  $id = $event->getText();
-  echo $id;
+  //$id = $event->getText();
+  $feeling = $event->getText();
+  //echo $id;
 }
 
 $query = "SELECT title,details FROM recmmend_table where id = $id;";
-//$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $id ORDER BY rand() LIMIT 3;";
+$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $feeling ORDER BY rand() LIMIT 3;";
 
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
