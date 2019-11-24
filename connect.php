@@ -15,6 +15,7 @@ $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATUR
 $link = mysqli_connect('us-cdbr-iron-east-05.cleardb.net', 'bef176e47e8f17', 'd24f08d0', 'heroku_1ac9c94b4480f8f');
 
 $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
+
 // 接続状況をチェックします
 if (mysqli_connect_errno()) {
     die("データベースに接続できません:" . mysqli_connect_error() . "\n");
@@ -39,8 +40,6 @@ if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
         echo $row['DataColumn'].'<br />';
-        //var_dump($row);
-        //public $res;
         $res = print_r($row, TRUE);
         echo $res;
     }
