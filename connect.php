@@ -39,12 +39,12 @@ $query = "SELECT details FROM recmmend_table where id = $id;";
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
-    //foreach ($result as $row) {
-        //$res = print_r($row,true);
-        //echo $res;
-        //}
-    $res = print_r($result,true);
-    echo $res;
+    foreach ($result as $row) {
+        $res = print_r($row,true);
+        echo $res;
+        }
+    //$res = print_r($result,true);
+    //echo $res;
 }
 
 // 接続を閉じます
