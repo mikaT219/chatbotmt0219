@@ -40,7 +40,7 @@ if ($result = mysqli_query($link, $query)) {
     echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
         //echo $row['DataColumn'].'<br />';
-        echo $row['DataColumn'];
+        //echo $row['DataColumn'];
         $res = print_r($row,true);
         //$res = var_dump($row);
         echo $res;
