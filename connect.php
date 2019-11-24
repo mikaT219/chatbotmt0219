@@ -31,7 +31,7 @@ foreach ($events as $event) {
   echo $id;
 }
 
-$query = "SELECT title,details FROM recmmend_table where feeling like $id ORDER BY rand() LIMIT 3;";
+$query = "SELECT title,details FROM recmmend_table where id = $id;";
 
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
