@@ -42,43 +42,43 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
-      //$columnArray = array();
-      //for ($i =0; $i<1; $i++) {
-      ////アクションの配列
-      //$actionArray = array();
-      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        //'映画','映画'));
-      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-      //  '小説','小説'));
-      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-      //  '漫画','漫画'));
+      $columnArray = array();
+      for ($i =0; $i<1; $i++) {
+      //アクションの配列
+      $actionArray = array();
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        '映画','映画'));
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+       '小説','小説'));
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+       '漫画','漫画'));
 
-//      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-  //      ($i + 1).'セレクト',
-  //      'ジャンル',
-  //      'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-  //      $actionArray
-  //    );
-      ////追加
-  //    array_push($columnArray, $column);
-  //    }
-  //    replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
+     $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+       ($i + 1).'セレクト',
+       'ジャンル',
+       'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+       $actionArray
+     );
+      //追加
+     array_push($columnArray, $column);
+     }
+     replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
 
   //bottunsテンプレートメッセージを返信
-  replyBottunsTemplate($bot,
-    $event->getReplyToken(),
-    'おてんきおしらせ－今日は晴れ',
-    'https://'. $_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-    'おてんきおしらせ',
-    'きょうは晴れ',
-    new\LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-      '明日の天気','tommorow'),
-    new\LINE\LINEBot\TemplateActionBuilder\PostBackTemplateActionBuilder(
-      '週末の天気','weekend'),
-    new\LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder(
-      'Webで見る','http://google.jp')
-    );
-  }
+  // replyBottunsTemplate($bot,
+  //   $event->getReplyToken(),
+  //   'おてんきおしらせ－今日は晴れ',
+  //   'https://'. $_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+  //   'おてんきおしらせ',
+  //   'きょうは晴れ',
+  //   new\LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //     '明日の天気','tommorow'),
+  //   new\LINE\LINEBot\TemplateActionBuilder\PostBackTemplateActionBuilder(
+  //     '週末の天気','weekend'),
+  //   new\LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder(
+  //     'Webで見る','http://google.jp')
+  //   );
+  // }
 　
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
