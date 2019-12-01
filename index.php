@@ -33,6 +33,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   replyTextMessage($bot, $event->getReplyToken(), $res);
+   }
   //画像を返信
   //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                       //  $_SERVER['HTTP_HOST'].
@@ -78,7 +79,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //   new\LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder(
   //     'Webで見る','http://google.jp')
   //   );
-   }
+
 　
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
