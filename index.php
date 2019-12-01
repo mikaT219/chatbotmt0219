@@ -66,8 +66,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //  }
 
   //bottunsテンプレートメッセージを返信
-  replyBottunsTemplate(
-    $bot,
+  replyBottunsTemplate($bot,
     $event->getReplyToken(),
     'おてんきおしらせ－今日は晴れ',
     'https://'. $_SERVER['HTTP_HOST'].'/imgs/template.jpg',
