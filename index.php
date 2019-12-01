@@ -58,7 +58,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
       $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
         ($i + 1).'セレクト',
-        '気分',
+        'ジャンル',
         'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
         $actionArray
       );
