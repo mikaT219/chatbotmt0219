@@ -32,7 +32,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //配列に格納された各イベントをループで処理
   foreach ($events as $event) {
   //テキストを返信し次のイベントへ
-  replyTextMessage($bot, $event->getReplyToken(), $res);
+  //replyTextMessage($bot, $event->getReplyToken(), $res);
   //画像を返信
   //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                       //  $_SERVER['HTTP_HOST'].
@@ -42,26 +42,26 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
-      //$columnArray = array();
-      //for ($i =0; $i<2; $i++) {
+      $columnArray = array();
+      for ($i =0; $i<2; $i++) {
       ////アクションの配列
-      //$actionArray = array();
-      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        //'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
-      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        //'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
-      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
-      //$column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-        //($i + 1).'セレクト',
-        //'指輪',
-        //'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-        //$actionArray
-      //);
+      $actionArray = array();
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
+      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+        ($i + 1).'セレクト',
+        '気分',
+        'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+        $actionArray
+      );
       ////追加
-      //array_push($columnArray, $column);
-      //}
-      //replyCarouselTemplate($bot, $event->getReplyToken(),'商品',$columnArray);
+      array_push($columnArray, $column);
+      }
+      replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
     }
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
@@ -100,5 +100,4 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-
 ?>
