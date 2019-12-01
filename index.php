@@ -43,7 +43,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
       $columnArray = array();
-      for ($i =0; $i<2; $i++) {
+      for ($i =0; $i<1; $i++) {
       ////アクションの配列
       $actionArray = array();
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
