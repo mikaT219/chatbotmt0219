@@ -47,14 +47,20 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       ////アクションの配列
       $actionArray = array();
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .'Laughable','Laughable'));
+        'Laughable','Laughable'));
         //'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .'be impress','be impress'));
+        'be impress','be impress'));
         //'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
-        'ボタン' .'acknowledg','acknowledg'));
+        'acknowledg','acknowledg'));
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
+        'Who cares','Who cares'));
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
+        'relaxed','relaxed'));
       $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
         ($i + 1).'セレクト',
         '気分',
