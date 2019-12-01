@@ -81,32 +81,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       'Webで見る','http://google.jp')
     );
 
-　　//ボタンテンプレートメッセージを返信。
-  function replyButtonsTemplate($bot,$replyToken,$alternativeText,
-                                $imageUrl,$title,$text, ...$actions) {
-    //　アクションを格納する
-    $actionArray = array();
-    //アクションをすべて追加
-    foreach ($actions as $value {
-      array_push($actionArray,$value);
-    }
-
-    //TemplateMessageBuilder
-    $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
-      $alternativeText,
-      new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
-        $title,$text,$imageUrl,$actionArray)
-      );
-    // TextMessageBuilderの引数はテキスト
-    $response = $bot->replyMessage($replyToken, $builder);
-    //レスポンスが異常な場合
-    if(!$response->isSucceeded()){
-      //エラー内容を出力
-      error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-    }
-  }　　
-
-
+　
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
       // 返信を行いメッセージを取得
@@ -143,4 +118,31 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
+    
+  //ボタンテンプレートメッセージを返信。
+    function replyButtonsTemplate($bot,$replyToken,$alternativeText,
+                                  $imageUrl,$title,$text, ...$actions) {
+      //　アクションを格納する
+      $actionArray = array();
+      //アクションをすべて追加
+      foreach ($actions as $value {
+        array_push($actionArray,$value);
+      }
+
+      //TemplateMessageBuilder
+      $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+        $alternativeText,
+        new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
+          $title,$text,$imageUrl,$actionArray)
+        );
+      // TextMessageBuilderの引数はテキスト
+      $response = $bot->replyMessage($replyToken, $builder);
+      //レスポンスが異常な場合
+      if(!$response->isSucceeded()){
+        //エラー内容を出力
+        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+      }
+    }　　
+
+
 ?>
