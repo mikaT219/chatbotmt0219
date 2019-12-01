@@ -87,7 +87,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     //　アクションを格納する
     $actionArray = array();
     //アクションをすべて追加
-    foreach ($actions as $action) {
+    foreach ($actions as $value {
       array_push($actionArray,$value);
     }
 
