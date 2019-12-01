@@ -107,18 +107,18 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
     //Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
     //ダイアログの配列
-    function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
-      $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
-        $alternativeText,
-        // Carouselテンプレートの引数はダイアログの配列
-        new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder(
-          $columnArray)
-      );
-      $response = $bot->replyMessage($replyToken, $builder);
-      if(!$response->isSucceeded()){
-        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-      }
-    }
+    // function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
+    //   $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+    //     $alternativeText,
+    //     // Carouselテンプレートの引数はダイアログの配列
+    //     new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder(
+    //       $columnArray)
+    //   );
+    //   $response = $bot->replyMessage($replyToken, $builder);
+    //   if(!$response->isSucceeded()){
+    //     error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+    //   }
+    // }
 
   // //ボタンテンプレートメッセージを返信。
   //   function replyBottunsTemplate($bot,$replyToken,$alternativeText,
