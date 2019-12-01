@@ -25,8 +25,9 @@ if (mysqli_connect_errno()) {
 
 
 //$query = "SELECT title,details FROM recmmend_table where id = 4;";
-//$query = "SELECT title,details FROM recmmend_table where feeling = 'impress';";
-$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE 'be impress' ORDER BY rand() LIMIT 3;";
+$query = "SELECT title,details FROM recmmend_table where feeling LIKE 'be impress';";
+//$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE 'be impress';";
+//$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE 'be impress' ORDER BY rand() LIMIT 3;";
 //echo $query;
 
 // クエリを実行します。
@@ -36,6 +37,7 @@ if ($result = mysqli_query($link, $query)) {
         //$str = mb_convert_encoding($row,"utf-8","sjis");
         //$res = print_r($str,true);
         $res = $row["title"].",".$row["details"]."\n";
+        //$res = $row["title"]."\n";
         echo $res;
         //echo $row["title"];
 
