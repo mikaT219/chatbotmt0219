@@ -28,12 +28,11 @@ if (mysqli_connect_errno()) {
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   $id = $event->getText();
-  //$feeling = $event->getText();
-  //echo $id;
+  echo $id;
 }
 
-//$query = "SELECT title,details FROM recmmend_table where id = $id;";
-$query = "SELECT title,details FROM recmmend_table where feeling LIKE $id;";
+$query = "SELECT title,details FROM recmmend_table where id = $id;";
+//$query = "SELECT title FROM recmmend_table where feeling LIKE $id;";
 //$query = "SELECT title,details FROM recmmend_table WHERE feeling = $feeling;";
 //$query = "SELECT title,details FROM recmmend_table WHERE feeling = $feeling ORDER BY rand() LIMIT 3;";
 
