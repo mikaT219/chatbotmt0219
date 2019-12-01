@@ -42,31 +42,70 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
-      $columnArray = array();
-      for ($i =0; $i<1; $i++) {
+      //$columnArray = array();
+      //for ($i =0; $i<1; $i++) {
       ////アクションの配列
-      $actionArray = array();
-      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        '映画','映画'));
-        //'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
-      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        '小説','小説'));
-        //'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
-      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
-        '漫画','漫画'));
+      //$actionArray = array();
+      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        //'映画','映画'));
+      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+      //  '小説','小説'));
+      //array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+      //  '漫画','漫画'));
 
-      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-        ($i + 1).'セレクト',
-        'ジャンル',
-        'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-        $actionArray
-      );
+//      $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+  //      ($i + 1).'セレクト',
+  //      'ジャンル',
+  //      'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+  //      $actionArray
+  //    );
       ////追加
-      array_push($columnArray, $column);
-      }
-      replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
+  //    array_push($columnArray, $column);
+  //    }
+  //    replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
+  //  }
+
+  //bottunsテンプレートメッセージを返信
+  replyBottunsTemplate(
+    $bot,
+    $event->getReplyToken(),
+    'おてんきおしらせ－今日は晴れ',
+    'https://'. $_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+    'おてんきおしらせ',
+    'きょうは晴れ',
+    new\LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+      '明日の天気','tommorow'),
+    new\LINE\LINEBot\TemplateActionBuilder\PostBackTemplateActionBuilder(
+      '週末の天気','weekend'),
+    new\LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder(
+      'Webで見る','http://google.jp')
+    );
+
+　　//ボタンテンプレートメッセージを返信。
+  function replyButtonsTemplate($bot,$replyToken,$alternativeText,
+  $umageUrl,$title,$text, ...$actions) {
+    //　アクションを格納する
+    $actionArray = array();
+    //アクションをすべて追加
+    foreach ($actions as $action) {
+      array_push($actionArray,$value);
     }
+
+    //TemplateMessageBuilder
+    $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+      $alternativeText,
+      new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
+        $title,$text,$imageUrl,$actionArray)
+      );
+    // TextMessageBuilderの引数はテキスト
+    $response = $bot->replyMessage($replyToken, $builder);
+    //レスポンスが異常な場合
+    if(!$response->isSucceeded()){
+      //エラー内容を出力
+      error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+    }
+  }　　
+
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
