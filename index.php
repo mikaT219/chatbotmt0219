@@ -64,7 +64,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
          array_push($columnArray, $column);
      }
      replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
-   // }
+  }
 
   //bottunsテンプレートメッセージを返信
   // replyBottunsTemplate($bot,
