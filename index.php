@@ -118,9 +118,9 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-    
+
   //ボタンテンプレートメッセージを返信。
-    function replyButtonsTemplate($bot,$replyToken,$alternativeText,
+    function replyBottunsTemplate($bot,$replyToken,$alternativeText,
                                   $imageUrl,$title,$text, ...$actions) {
       //　アクションを格納する
       $actionArray = array();
