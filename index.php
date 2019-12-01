@@ -78,7 +78,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //   new\LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder(
   //     'Webで見る','http://google.jp')
   //   );
-  // }
+   }
 　
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
