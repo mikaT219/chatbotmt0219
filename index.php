@@ -83,7 +83,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
 　　//ボタンテンプレートメッセージを返信。
   function replyButtonsTemplate($bot,$replyToken,$alternativeText,
-  $imageUrl,$title,$text, ...$actions) {
+                                $imageUrl,$title,$text, ...$actions) {
     //　アクションを格納する
     $actionArray = array();
     //アクションをすべて追加
