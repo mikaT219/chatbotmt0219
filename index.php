@@ -87,7 +87,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       // TextMessageBuilderの引数はテキスト
       $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
 
-      レスポンスが異常な場合
+      //レスポンスが異常な場合
       if(!$response->isSucceeded()){
         //エラー内容を出力
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
