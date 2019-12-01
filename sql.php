@@ -25,6 +25,7 @@ if (mysqli_connect_errno()) {
 
 
 //$query = "SELECT title,details FROM recmmend_table where id = 4;";
+//$query = "SELECT title,details FROM recmmend_table where feeling = 'impress';";
 $query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE 'be impress' ORDER BY rand() LIMIT 3;";
 //echo $query;
 
