@@ -47,11 +47,12 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       ////アクションの配列
       $actionArray = array();
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .$i . '-' . 1, 'c-' .$i .'-' . 1));
+        'ボタン' .'Laughable'));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .$i . '-' . 2, 'c-' .$i .'-' . 2));
+        'ボタン' .'be impress'));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-        'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
+        //'ボタン' .''$i . '-' . 3, 'c-' .$i .'-' . 3''));
+        'ボタン' .'acknowledg'));
       $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
         ($i + 1).'セレクト',
         '気分',
