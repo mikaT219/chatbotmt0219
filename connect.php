@@ -33,8 +33,8 @@ echo $id;
 }
 
 //$query = "SELECT title,details FROM recmmend_table where id = $id;";
-$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $id;";
-//$query = "SELECT title,details FROM recmmend_table WHERE feeling = $feeling;";
+//$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $id;";
+$query = "SELECT title,details FROM recmmend_table WHERE feeling = $id;";
 //$query = "SELECT title,details FROM recmmend_table WHERE feeling = $feeling ORDER BY rand() LIMIT 3;";
 
 // クエリを実行します。
