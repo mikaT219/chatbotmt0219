@@ -48,7 +48,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       $actionArray = array();
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         //'ボタン' .'Laughable'));
-        'ボタン' .''$i . '-' . 3, 'c-' .$i .'-' . 1'')
+        'ボタン' .''$i . '-' . 3, 'c-' .$i .'-' . 1''));
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         //'ボタン' .'be impress'));
         'ボタン' .''$i . '-' . 3, 'c-' .$i .'-' . 2'')
