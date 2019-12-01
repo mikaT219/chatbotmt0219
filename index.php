@@ -55,7 +55,9 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
         //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
         'acknowledg','acknowledg'));
-
+      array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+        //'ボタン' .$i . '-' . 3, 'c-' .$i .'-' . 3));
+        'Who cares','Who cares'));
       $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
         ($i + 1).'セレクト',
         '気分',
