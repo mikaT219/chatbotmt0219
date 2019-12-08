@@ -11,6 +11,14 @@ try {
     print "接続エラー:{$e->getMessage()}";
 }
 
+$stmt = $pdo->prepare("select title from recmmend_table where id = 2");
+//executeでクエリを実行
+$stmt->execute();
+// 結果をセット
+$result = $stmt->fetch();
+// echo "title = ".$result['title'].PHP_EOL;
+
+
 require_once __DIR__.'/vendor/autoload.php';
 // require_once __DIR__.'/connect.php';
 
@@ -48,12 +56,6 @@ foreach ($events as $event) {
     }
 
     $id = $event->getText();
-    $stmt = $pdo->prepare("select title from recmmend_table where id = 2");
-    //executeでクエリを実行
-    $stmt->execute();
-    // 結果をセット
-    $result = $stmt->fetch();
-    // echo "title = ".$result['title'].PHP_EOL;
 
     // $bot->replyText($event->getReplyToken(), $event->getText());
     $bot->replyText($event->getReplyToken(), $result);
