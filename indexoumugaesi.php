@@ -30,22 +30,18 @@ foreach ($events as $event) {
     //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
       //  error_log('Non message event has come');
       //  continue;
+    //テキストを返信し次のイベントへ
+    replyTextMessage($bot, $event->getReplyToken(), $event->getText());
+    }
  // TextMessageBuilderクラスのインスタンスでなければ処理をスキップ
     //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
         //error_log('Non text message has come');
         //continue;
-        //オウム返し
-        //$bot->replyText($event->getReplyToken(), $event->getText());
-  //テキストを返信し次のイベントへ
-      replyTextMessage($bot, $event->getReplyToken(), $event->getText());
-      //replyTextMessage($bot, $event->getReplyToken(), $event->getText());
-  // //画像を返信
-  //     replyImageMessage($bot, $event->getReplyToken(),'https://'.
-  //                             $_SERVER['HTTP_HOST'].
-  //                             '/imgs/download2.jpg',
-  //                             'https://'.$_SERVER['HTTP_HOST'].
-  //                             '/imgs/download1.jpg');
-      }
+    //}
+    //ハロー返し
+    //$bot->replyText($event->getReplyToken(), 'こんにちは、テキスト送信ですよ');
+    //オウム返し
+    //$bot->replyText($event->getReplyToken(), $event->getText());
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
       // 返信を行いメッセージを取得
@@ -54,14 +50,6 @@ foreach ($events as $event) {
       //レスポンスが異常な場合
       if(!$response->isSucceeded()){
         //エラー内容を出力
-        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-      }
-    }
-    //画像を返信。引数はLINEBot、返信先、画像URL、サムネイルURL
-    function replyImageMessage($bot,$replyToken,$originalImageUrl,$previewImageUrl){
-      // ImageMessageBuilderの引数は画像URL、サムネイルURL
-      $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder($originalImageUrl, $previewImageUrl));
-      if(!$response->isSucceeded()){
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
