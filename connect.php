@@ -21,9 +21,7 @@ if (mysqli_connect_errno()) {
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
-$id = $event->getText();
-//$feeling = $event->getText();
-echo $id;
+  $id = $event->getText();
 }
 
 $query = "SELECT title,details FROM recmmend_table where id = $id;";
