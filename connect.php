@@ -19,15 +19,19 @@ if (mysqli_connect_errno()) {
 }
 // userテーブルの全てのデータを取得する
 //配列に格納された各イベントをループで処理
-// foreach ($events as $event) {
-//   //テキストを返信し次のイベントへ
-//   $id = $event->getText();
-// }
-
-$query = "SELECT title,details FROM recmmend_table where id = 2;";
-
+foreach ($events as $event) {
+  //テキストを返信し次のイベントへ
+$id = $event->getText();
+//$feeling = $event->getText();
+echo $id;
+}
+//$query = "SELECT title,details FROM recmmend_table where feeling LIKE 'relaxed';";
+$query = "SELECT title,details FROM recmmend_table where id = $id;";
+//$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $id;";
+//$query = "SELECT title,details FROM recmmend_table WHERE feeling = $feeling ORDER BY rand() LIMIT 3;";
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
+    //echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
         $res = $row["title"].",".$row["details"]."\n";
         echo $res;
