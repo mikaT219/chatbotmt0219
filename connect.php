@@ -25,13 +25,11 @@ $id = $event->getText();
 //$feeling = $event->getText();
 echo $id;
 }
-//$query = "SELECT title,details FROM recmmend_table where feeling LIKE 'relaxed';";
+
 $query = "SELECT title,details FROM recmmend_table where id = $id;";
-//$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $id;";
-//$query = "SELECT title,details FROM recmmend_table WHERE feeling = $feeling ORDER BY rand() LIMIT 3;";
+
 // クエリを実行します。
 if ($result = mysqli_query($link, $query)) {
-    //echo "SELECT に成功しました。\n";
     foreach ($result as $row) {
         $res = $row["title"].",".$row["details"]."\n";
         echo $res;
