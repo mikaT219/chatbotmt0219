@@ -125,7 +125,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       $actionArray = array();
       //アクションをすべて追加
       foreach ($actions as $value {
-        array_push($actionArray,$value);
+        array_push($actionArray,$value)
       }
 
       //TemplateMessageBuilder
