@@ -46,8 +46,8 @@ foreach ($events as $event) {
         continue;
     }
 
-    $bot->replyText($event->getReplyToken(), $event->getText());
-
+    // $bot->replyText($event->getReplyToken(), $event->getText());
+    $bot->replyText($event->getReplyToken(), $res);
 }
 
 ?>
