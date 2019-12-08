@@ -2,15 +2,12 @@
 //Composerでインストールしたライブラリを一括読み込み
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/connect.php';
-
 // アクセストークンを使いCurlHTTPClientをインスタンス化
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
-
 // LINE Messaging APIがリクエストに付与した署名を取得
 $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
-
 // 署名が正当かチェック。正当であればリクエストをパースし配列へ
 // 不正であれば例外の内容を出力
 try {
@@ -28,7 +25,6 @@ catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
 catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
-
   //配列に格納された各イベントをループで処理
   foreach ($events as $event) {
   //テキストを返信し次のイベントへ
@@ -40,7 +36,6 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
                       //  '/imgs/download1.jpg',
                       // 'https://'.$_SERVER['HTTP_HOST'].
                       //'/imgs/download2.jpg');
-
   //カルーセルテンプレートメッセージを返信
   // //ダイアログの配列
   //     $columnArray = array();
@@ -65,7 +60,6 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //    }
   //    replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
   // // }
-
   //bottunsテンプレートメッセージを返信
   // replyBottunsTemplate($bot,
   //   $event->getReplyToken(),
@@ -86,14 +80,12 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       // 返信を行いメッセージを取得
       // TextMessageBuilderの引数はテキスト
       $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
-
       //レスポンスが異常な場合
       if(!$response->isSucceeded()){
         //エラー内容を出力
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-
     // //画像を返信。引数はLINEBot、返信先、画像URL、サムネイルURL
     // function replyImageMessage($bot,$replyToken,$originalImageUrl,$previewImageUrl){
     //    ImageMessageBuilderの引数は画像URL、サムネイルURL
@@ -102,7 +94,6 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     //     error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
     //   }
     // }
-
     //Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
     // ダイアログの配列
     function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
@@ -117,7 +108,6 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-
   // //ボタンテンプレートメッセージを返信。
     // function replyBottunsTemplate($bot,$replyToken,$alternativeText,
     //                               $imageUrl,$title,$text, ...$actions) {
