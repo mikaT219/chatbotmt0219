@@ -47,18 +47,24 @@ foreach ($events as $event) {
         continue;
     }
 
-    $bot->replyText($event->getReplyToken(), $event->getText());
-    // $bot->replyText($event->getReplyToken(), $res);
-    // $query = "SELECT title,details FROM recmmend_table where id = $id;";
-    //prepareメソッドでSQLをセット
-    $stmt = $pdo->prepare("select title from recmmend_table where id = 2");
+    $id = $event->getText();
+    $stmt = $pdo->prepare("select title from recmmend_table where id = $id");
     //executeでクエリを実行
     $stmt->execute();
     // 結果をセット
     $result = $stmt->fetch();
-
     echo "title = ".$result['title'].PHP_EOL;
 
+    // $bot->replyText($event->getReplyToken(), $event->getText());
+    $bot->replyText($event->getReplyToken(), $event->$result);
+    // $bot->replyText($event->getReplyToken(), $res);
+    // $query = "SELECT title,details FROM recmmend_table where id = $id;";
+    //prepareメソッドでSQLをセット
+    // $stmt = $pdo->prepare("select title from recmmend_table where id = $id");
+    // //executeでクエリを実行
+    // $stmt->execute();
+    // // 結果をセット
+    // $result = $stmt->fetch();
 }
 
 ?>
