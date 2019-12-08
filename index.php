@@ -104,7 +104,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     // }
 
     Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
-    ダイアログの配列
+    // ダイアログの配列
     function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
       $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
         $alternativeText,
