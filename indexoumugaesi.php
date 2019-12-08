@@ -1,17 +1,18 @@
 <?php
 
 // DB接続
-// try {
-//     $pdo = new PDO ( 'mysql:dbname=heroku_95ce0246cf019ce; host=us-cdbr-iron-east-05.cleardb.net; port=3306; charset=utf8', 'b200b128c40131', 'f1376c03' );
-//     $DB_connection = '接続に成功しました。';
-//     print '接続に成功しました。';
-// } catch ( PDOException $e ) {
-//     $DB_connection = "接続エラー:{$e->getMessage()}";
-//     print "接続エラー:{$e->getMessage()}";
-// }
+try {
+//    $pdo = new PDO ( 'mysql:dbname=heroku_95ce0246cf019ce; host=us-cdbr-iron-east-05.cleardb.net; port=3306; charset=utf8', 'b200b128c40131', 'f1376c03' );
+    $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
+    $DB_connection = '接続に成功しました。';
+    print '接続に成功しました。';
+} catch ( PDOException $e ) {
+    $DB_connection = "接続エラー:{$e->getMessage()}";
+    print "接続エラー:{$e->getMessage()}";
+}
 
 require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/connect.php';
+// require_once __DIR__.'/connect.php';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
@@ -46,8 +47,18 @@ foreach ($events as $event) {
         continue;
     }
 
-    // $bot->replyText($event->getReplyToken(), $event->getText());
-    $bot->replyText($event->getReplyToken(), $res);
+    $bot->replyText($event->getReplyToken(), $event->getText());
+    // $bot->replyText($event->getReplyToken(), $res);
+    // $query = "SELECT title,details FROM recmmend_table where id = $id;";
+    //prepareメソッドでSQLをセット
+    $stmt = $pdo->prepare("select title from recmmend_table where id = 2");
+    //executeでクエリを実行
+    $stmt->execute();
+    // 結果をセット
+    $result = $stmt->fetch();
+
+    echo "title = ".$result['title'].PHP_EOL;
+
 }
 
 ?>
