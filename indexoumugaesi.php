@@ -53,7 +53,7 @@ foreach ($events as $event) {
     $stmt->execute();
     // 結果をセット
     $result = $stmt->fetch();
-    echo "title = ".$result['title'].PHP_EOL;
+    // echo "title = ".$result['title'].PHP_EOL;
 
     // $bot->replyText($event->getReplyToken(), $event->getText());
     $bot->replyText($event->getReplyToken(), $result);
