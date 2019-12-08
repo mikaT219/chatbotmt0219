@@ -119,27 +119,27 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     }
 
   // //ボタンテンプレートメッセージを返信。
-  //   function replyBottunsTemplate($bot,$replyToken,$alternativeText,
-  //                                 $imageUrl,$title,$text, ...$actions) {
-  //     //　アクションを格納する
-  //     $actionArray = array();
-  //     //アクションをすべて追加
-  //     foreach ($actions as $value {
-  //       array_push($actionArray,$value);
-  //     }
-  //
-  //     //TemplateMessageBuilder
-  //     $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
-  //       $alternativeText,
-  //       new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
-  //         $title,$text,$imageUrl,$actionArray)
-  //       );
-  //     // TextMessageBuilderの引数はテキスト
-  //     $response = $bot->replyMessage($replyToken, $builder);
-  //     //レスポンスが異常な場合
-  //     if(!$response->isSucceeded()){
-  //       //エラー内容を出力
-  //       error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-  //     }
-  //   }　　
+    function replyBottunsTemplate($bot,$replyToken,$alternativeText,
+                                  $imageUrl,$title,$text, ...$actions) {
+      //　アクションを格納する
+      $actionArray = array();
+      //アクションをすべて追加
+      foreach ($actions as $value {
+        array_push($actionArray,$value);
+      }
+
+      //TemplateMessageBuilder
+      $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+        $alternativeText,
+        new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
+          $title,$text,$imageUrl,$actionArray)
+        );
+      // TextMessageBuilderの引数はテキスト
+      $response = $bot->replyMessage($replyToken, $builder);
+      //レスポンスが異常な場合
+      if(!$response->isSucceeded()){
+        //エラー内容を出力
+        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+      }
+    }　　
 ?>
