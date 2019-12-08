@@ -41,7 +41,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
           //continue;
           //オウム返し
           $bot->replyText($event->getReplyToken(), $event->getText());
-   }
+   // }
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
     function replyTextMessage($bot,$replyToken,$text) {
