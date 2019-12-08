@@ -48,7 +48,7 @@ foreach ($events as $event) {
     }
 
     $id = $event->getText();
-    $stmt = $pdo->prepare("select title from recmmend_table where id = $id");
+    $stmt = $pdo->prepare("select title from recmmend_table where id = 2");
     //executeでクエリを実行
     $stmt->execute();
     // 結果をセット
