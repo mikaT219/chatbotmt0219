@@ -26,7 +26,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
   //配列に格納された各イベントをループで処理
-  // foreach ($events as $event) {
+  foreach ($events as $event) {
   // //テキストを返信し次のイベントへ
   // replyTextMessage($bot, $event->getReplyToken(), $res);
   //  }
@@ -58,7 +58,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
          array_push($columnArray, $column);
      }
      replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
-  // }
+  }
   //bottunsテンプレートメッセージを返信
   // replyBottunsTemplate($bot,
   //   $event->getReplyToken(),
@@ -74,17 +74,19 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
   //     'Webで見る','http://google.jp')
   //   );
      // }
-    //テキストを返信。引数はLINEBot、返信先、テキスト
-    function replyTextMessage($bot,$replyToken,$text) {
-      // 返信を行いメッセージを取得
-      // TextMessageBuilderの引数はテキスト
-      $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
-      //レスポンスが異常な場合
-      if(!$response->isSucceeded()){
-        //エラー内容を出力
-        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-      }
-    }
+　
+    // //テキストを返信。引数はLINEBot、返信先、テキスト
+    // function replyTextMessage($bot,$replyToken,$text) {
+    //   // 返信を行いメッセージを取得
+    //   // TextMessageBuilderの引数はテキスト
+    //   $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+    //
+    //   //レスポンスが異常な場合
+    //   if(!$response->isSucceeded()){
+    //     //エラー内容を出力
+    //     error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+    //   }
+    // }
     // //画像を返信。引数はLINEBot、返信先、画像URL、サムネイルURL
     // function replyImageMessage($bot,$replyToken,$originalImageUrl,$previewImageUrl){
     //    ImageMessageBuilderの引数は画像URL、サムネイルURL
@@ -94,7 +96,7 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
     //   }
     // }
     //Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
-    // ダイアログの配列
+    //ダイアログの配列
     function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
       $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
         $alternativeText,
@@ -108,27 +110,27 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
       }
     }
   // //ボタンテンプレートメッセージを返信。
-    // function replyBottunsTemplate($bot,$replyToken,$alternativeText,
-    //                               $imageUrl,$title,$text, ...$actions) {
-    //   //　アクションを格納する
-    //   $actionArray = array();
-    //   //アクションをすべて追加
-    //   foreach ($actions as $value {
-    //     array_push($actionArray,$value);
-    //   }
-    //
-    //   //TemplateMessageBuilder
-    //   $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
-    //     $alternativeText,
-    //     new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
-    //       $title,$text,$imageUrl,$actionArray)
-    //     );
-    //   // TextMessageBuilderの引数はテキスト
-    //   $response = $bot->replyMessage($replyToken, $builder);
-    //   //レスポンスが異常な場合
-    //   if(!$response->isSucceeded()){
-    //     //エラー内容を出力
-    //     error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-    //   }
-    // }　　
+  //   function replyBottunsTemplate($bot,$replyToken,$alternativeText,
+  //                                 $imageUrl,$title,$text, ...$actions) {
+  //     //　アクションを格納する
+  //     $actionArray = array();
+  //     //アクションをすべて追加
+  //     foreach ($actions as $value {
+  //       array_push($actionArray,$value);
+  //     }
+  //
+  //     //TemplateMessageBuilder
+  //     $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+  //       $alternativeText,
+  //       new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
+  //         $title,$text,$imageUrl,$actionArray)
+  //       );
+  //     // TextMessageBuilderの引数はテキスト
+  //     $response = $bot->replyMessage($replyToken, $builder);
+  //     //レスポンスが異常な場合
+  //     if(!$response->isSucceeded()){
+  //       //エラー内容を出力
+  //       error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+  //     }
+  //   }　　
 ?>
