@@ -31,8 +31,16 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 
   //配列に格納された各イベントをループで処理
   foreach ($events as $event) {
-  //テキストを返信し次のイベントへ
-  replyTextMessage($bot, $event->getReplyToken(), $event->getText());
+   // MessageEventクラスのインスタンスでなければ処理をスキップ
+      //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+        //  error_log('Non message event has come');
+        //  continue;
+   // TextMessageBuilderクラスのインスタンスでなければ処理をスキップ
+      //if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+          //error_log('Non text message has come');
+          //continue;
+          //オウム返し
+          $bot->replyText($event->getReplyToken(), $event->getText());
    }
 
     //テキストを返信。引数はLINEBot、返信先、テキスト
