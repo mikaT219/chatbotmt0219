@@ -56,7 +56,7 @@ foreach ($events as $event) {
     echo "title = ".$result['title'].PHP_EOL;
 
     // $bot->replyText($event->getReplyToken(), $event->getText());
-    $bot->replyText($event->getReplyToken(), $event->$result);
+    $bot->replyText($event->getReplyToken(), $result);
     // $bot->replyText($event->getReplyToken(), $res);
     // $query = "SELECT title,details FROM recmmend_table where id = $id;";
     //prepareメソッドでSQLをセット
