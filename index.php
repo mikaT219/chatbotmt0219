@@ -30,10 +30,10 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 }
 
   //配列に格納された各イベントをループで処理
-  // foreach ($events as $event) {
-  // //テキストを返信し次のイベントへ
-  // replyTextMessage($bot, $event->getReplyToken(), $res);
-  //  }
+  foreach ($events as $event) {
+  //テキストを返信し次のイベントへ
+  replyTextMessage($bot, $event->getReplyToken(), $res);
+   }
   //画像を返信
   //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                       //  $_SERVER['HTTP_HOST'].
@@ -42,29 +42,29 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
                       //'/imgs/download2.jpg');
 
   //カルーセルテンプレートメッセージを返信
-  //ダイアログの配列
-      $columnArray = array();
-      for ($i =0; $i<1; $i++) {
-          //アクションの配列
-          $actionArray = array();
-          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-            '映画','映画'));
-          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-           '小説','小説'));
-          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-           '漫画','漫画'));
-
-         $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-           ($i + 1).'セレクト',
-           'ジャンル',
-           'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-           $actionArray
-         );
-          //追加
-         array_push($columnArray, $column);
-     }
-     replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
-  // }
+  // //ダイアログの配列
+  //     $columnArray = array();
+  //     for ($i =0; $i<1; $i++) {
+  //         //アクションの配列
+  //         $actionArray = array();
+  //         array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //           '映画','映画'));
+  //         array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //          '小説','小説'));
+  //         array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //          '漫画','漫画'));
+  //
+  //        $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+  //          ($i + 1).'セレクト',
+  //          'ジャンル',
+  //          'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+  //          $actionArray
+  //        );
+  //         //追加
+  //        array_push($columnArray, $column);
+  //    }
+  //    replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
+  // // }
 
   //bottunsテンプレートメッセージを返信
   // replyBottunsTemplate($bot,
