@@ -19,12 +19,12 @@ if (mysqli_connect_errno()) {
 }
 // userテーブルの全てのデータを取得する
 //配列に格納された各イベントをループで処理
-foreach ($events as $event) {
-  //テキストを返信し次のイベントへ
-$id = $event->getText();
-//$feeling = $event->getText();
-echo $id;
-}
+// foreach ($events as $event) {
+//   //テキストを返信し次のイベントへ
+// $id = $event->getText();
+// //$feeling = $event->getText();
+// echo $id;
+// }
 //$query = "SELECT title,details FROM recmmend_table where feeling LIKE 'relaxed';";
 $query = "SELECT title,details FROM recmmend_table where id = $id;";
 //$query = "SELECT title,details FROM recmmend_table WHERE feeling LIKE $id;";
