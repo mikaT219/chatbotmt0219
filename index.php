@@ -59,21 +59,7 @@ foreach ($events as $event) {
      }
      replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
   }
-  //bottunsテンプレートメッセージを返信
-  // replyBottunsTemplate($bot,
-  //   $event->getReplyToken(),
-  //   'おてんきおしらせ－今日は晴れ',
-  //   'https://'. $_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-  //   'おてんきおしらせ',
-  //   'きょうは晴れ',
-  //   new\LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-  //     '明日の天気','tommorow'),
-  //   new\LINE\LINEBot\TemplateActionBuilder\PostBackTemplateActionBuilder(
-  //     '週末の天気','weekend'),
-  //   new\LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder(
-  //     'Webで見る','http://google.jp')
-  //   );
-     // }
+
 　
     // //テキストを返信。引数はLINEBot、返信先、テキスト
     // function replyTextMessage($bot,$replyToken,$text) {
@@ -109,28 +95,4 @@ foreach ($events as $event) {
         error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
       }
     }
-  // //ボタンテンプレートメッセージを返信。
-  //   function replyBottunsTemplate($bot,$replyToken,$alternativeText,
-  //                                 $imageUrl,$title,$text, ...$actions) {
-  //     //　アクションを格納する
-  //     $actionArray = array();
-  //     //アクションをすべて追加
-  //     foreach ($actions as $value {
-  //       array_push($actionArray,$value);
-  //     }
-  //
-  //     //TemplateMessageBuilder
-  //     $builder = new\LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
-  //       $alternativeText,
-  //       new\LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
-  //         $title,$text,$imageUrl,$actionArray)
-  //       );
-  //     // TextMessageBuilderの引数はテキスト
-  //     $response = $bot->replyMessage($replyToken, $builder);
-  //     //レスポンスが異常な場合
-  //     if(!$response->isSucceeded()){
-  //       //エラー内容を出力
-  //       error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-  //     }
-  //   }　　
 ?>
