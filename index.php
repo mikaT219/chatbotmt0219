@@ -63,18 +63,18 @@ foreach ($events as $event) {
   // }
 
 　
-    // //テキストを返信。引数はLINEBot、返信先、テキスト
-    function replyTextMessage($bot,$replyToken,$text) {
-      // 返信を行いメッセージを取得
-      // TextMessageBuilderの引数はテキスト
-      $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+  // //テキストを返信。引数はLINEBot、返信先、テキスト
+  function replyTextMessage($bot,$replyToken,$text) {
+    // 返信を行いメッセージを取得
+    // TextMessageBuilderの引数はテキスト
+    $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
 
-      //レスポンスが異常な場合
-      if(!$response->isSucceeded()){
-        //エラー内容を出力
-        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-      }
+    //レスポンスが異常な場合
+    if(!$response->isSucceeded()){
+      //エラー内容を出力
+      error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
     }
+  }
     // //画像を返信。引数はLINEBot、返信先、画像URL、サムネイルURL
     // function replyImageMessage($bot,$replyToken,$originalImageUrl,$previewImageUrl){
     //    ImageMessageBuilderの引数は画像URL、サムネイルURL
