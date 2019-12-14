@@ -1,7 +1,7 @@
 <?php
 //Composerでインストールしたライブラリを一括読み込み
 require_once __DIR__.'/vendor/autoload.php';
-// require_once __DIR__.'/connect.php';
+require_once __DIR__.'/connect.php';
 // アクセストークンを使いCurlHTTPClientをインスタンス化
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
