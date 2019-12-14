@@ -1,7 +1,7 @@
 <?php
 //Composerでインストールしたライブラリを一括読み込み
 require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/connect.php';
+//equire_once __DIR__.'/connect.php';
 // アクセストークンを使いCurlHTTPClientをインスタンス化
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
@@ -14,8 +14,8 @@ $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATUR
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   //テスト
-  // replyTextMessage($bot, $event->getReplyToken(), $res);
-  replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
+  $bot->ReplyText($event->getReplyToken(), 'TextMessage');
+  //replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
 }
 
 ?>
