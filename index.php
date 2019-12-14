@@ -27,8 +27,10 @@ catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
 }
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
-//テキストを返信し次のイベントへ
-replyTextMessage($bot, $event->getReplyToken(), $res);
+  //テキストを返信し次のイベントへ
+  //replyTextMessage($bot, $event->getReplyToken(), $res);
+  //テスト
+  $bot->replyText($event->getReplyToken(),'TextMessage');
 }
   //画像を返信
   //replyImageMessage($bot, $event->getReplyToken(),'https://'.
