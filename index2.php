@@ -14,7 +14,7 @@ $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATUR
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   //テスト
-  $bot->ReplyText($event->getReplyToken(), 'TextMessage');
+  $bot->replyText($event->getReplyToken(), 'TextMessage');
   //replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
 }
 
