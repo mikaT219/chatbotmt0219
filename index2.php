@@ -14,8 +14,15 @@ $events = $bot->parseEventRequest(file_get_contents('php://input'),$signature);
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   //テスト
-  $bot->replyText($event->getReplyToken(), 'TextMessage');
-  //replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
+  // $bot->replyText($event->getReplyToken(), 'TextMessage');
+  replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
 }
 
+// //テキストを返信。引数はLINEBot、返信先、テキスト
+function replyTextMessage($bot,$replyToken,$text) {
+  // 返信を行いメッセージを取得
+  // TextMessageBuilderの引数はテキスト
+  $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+
+}
 ?>
