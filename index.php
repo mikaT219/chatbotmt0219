@@ -64,10 +64,10 @@ foreach ($events as $event) {
 
 　
     // //テキストを返信。引数はLINEBot、返信先、テキスト
-    function replyTextMessage($bot,$replyToken,$text) {
-      // 返信を行いメッセージを取得
-      // TextMessageBuilderの引数はテキスト
-      $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+    // function replyTextMessage($bot,$replyToken,$text) {
+    //   // 返信を行いメッセージを取得
+    //   // TextMessageBuilderの引数はテキスト
+    //   $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
     //
     //   //レスポンスが異常な場合
     //   if(!$response->isSucceeded()){
@@ -96,5 +96,5 @@ foreach ($events as $event) {
     //   if(!$response->isSucceeded()){
     //     error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
     //   }
-    }
+    // }
 ?>
