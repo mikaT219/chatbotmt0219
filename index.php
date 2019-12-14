@@ -10,26 +10,26 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 // 署名が正当かチェック。正当であればリクエストをパースし配列へ
 // 不正であれば例外の内容を出力
-// try {
-//     $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
-// }
-// catch(\LINE\LINEBot\Exception\InvalidSignatureException $e) {
-//     error_log("parseEventRequest failed. InvalidSignatureException => ".var_export($e, true));
-// }
-// catch(\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
-//     error_log("parseEventRequest failed. UnknownEventTypeException => ".var_export($e, true));
-// }
-// catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
-//     error_log("parseEventRequest failed. UnknownMessageTypeException => ".var_export($e, true));
-// }
-// catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
-//     error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
-// }
+try {
+    $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
+}
+catch(\LINE\LINEBot\Exception\InvalidSignatureException $e) {
+    error_log("parseEventRequest failed. InvalidSignatureException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
+    error_log("parseEventRequest failed. UnknownEventTypeException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
+    error_log("parseEventRequest failed. UnknownMessageTypeException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
+    error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
+}
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
 //テキストを返信し次のイベントへ
-// replyTextMessage($bot, $event->getReplyToken(), $res);
-// }
+replyTextMessage($bot, $event->getReplyToken(), $res);
+}
   //画像を返信
   //replyImageMessage($bot, $event->getReplyToken(),'https://'.
                       //  $_SERVER['HTTP_HOST'].
@@ -38,34 +38,34 @@ foreach ($events as $event) {
                       //'/imgs/download2.jpg');
   //カルーセルテンプレートメッセージを返信
   //ダイアログの配列
-      $columnArray = array();
-      for ($i =0; $i<1; $i++) {
-          //アクションの配列
-          $actionArray = array();
-          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-            '映画','映画'));
-          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-           '小説','小説'));
-          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-           '漫画','漫画'));
-         $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
-           ($i + 1).'セレクト',
-           'ジャンル',
-           'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
-           $actionArray
-         );
-          //追加
-         array_push($columnArray, $column);
-     }
-     replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
-  }
+  //     $columnArray = array();
+  //     for ($i =0; $i<1; $i++) {
+  //         //アクションの配列
+  //         $actionArray = array();
+  //         array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //           '映画','映画'));
+  //         array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //          '小説','小説'));
+  //         array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+  //          '漫画','漫画'));
+  //        $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+  //          ($i + 1).'セレクト',
+  //          'ジャンル',
+  //          'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+  //          $actionArray
+  //        );
+  //         //追加
+  //        array_push($columnArray, $column);
+  //    }
+  //    replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
+  // }
 
 　
     // //テキストを返信。引数はLINEBot、返信先、テキスト
-    // function replyTextMessage($bot,$replyToken,$text) {
-    //   // 返信を行いメッセージを取得
-    //   // TextMessageBuilderの引数はテキスト
-    //   $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+    function replyTextMessage($bot,$replyToken,$text) {
+      // 返信を行いメッセージを取得
+      // TextMessageBuilderの引数はテキスト
+      $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
     //
     //   //レスポンスが異常な場合
     //   if(!$response->isSucceeded()){
@@ -83,16 +83,16 @@ foreach ($events as $event) {
     // }
     //Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
     //ダイアログの配列
-    function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
-      $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
-        $alternativeText,
-        // Carouselテンプレートの引数はダイアログの配列
-        new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder(
-          $columnArray)
-      );
-      $response = $bot->replyMessage($replyToken, $builder);
-      if(!$response->isSucceeded()){
-        error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
-      }
+    // function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
+    //   $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+    //     $alternativeText,
+    //     // Carouselテンプレートの引数はダイアログの配列
+    //     new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder(
+    //       $columnArray)
+    //   );
+    //   $response = $bot->replyMessage($replyToken, $builder);
+    //   if(!$response->isSucceeded()){
+    //     error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+    //   }
     }
 ?>
