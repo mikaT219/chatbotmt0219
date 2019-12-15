@@ -58,7 +58,7 @@ foreach ($events as $event) {
     // 配列に格納された各イベントをループで処理
     // foreach ($events as $event) {
     //格納した返信をLINEに返す
-    $bot->replyText($event->getReplyToken(), $result);
+    $bot->replyText($event->getReplyToken(), $stmt->execute());
     // $bot->replyText($event->getReplyToken(), $event->getText());
     // $bot->replyText($event->getReplyToken(), $line_mes);
 }
