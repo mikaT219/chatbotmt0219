@@ -39,15 +39,15 @@ try {
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
       $columnArray = array();
-      for ($i =0; $i<1; $i++) {
+      for ($i =0; $i<3; $i++) {
           //アクションの配列
           $actionArray = array();
           array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-            '小説','小説'));
+            '感動する小説','感動する小説'));
           array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-            '漫画','漫画'));
+            '感動する漫画','感動する漫画'));
           array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
-            '映画','映画'));
+            '感動する映画','感動する映画'));
          $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
            ($i + 1).'セレクト',
            'ジャンル',
