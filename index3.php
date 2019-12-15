@@ -40,10 +40,10 @@ try {
 foreach ($events as $event) {
     //テキストを返信し次のイベントへ
     $id = $event->getText();
-    // echo "id = ".$id;
-    // }
+    echo "id = ".$id;
+    }
     //クエリの格納
-    $stmt = $pdo->prepare("select title from recmmend_table where $id");
+    $stmt = $pdo->prepare("select title from recmmend_table where $id;");
     //executeでクエリを実行
     $stmt->execute();
     // 結果をセット
