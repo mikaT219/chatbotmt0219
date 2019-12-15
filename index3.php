@@ -36,19 +36,16 @@ try {
     print "接続エラー:{$e->getMessage()}";
 }
 
-$id = '';
-
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   $id = $event->getText();
-  echo $id;
 }
+  echo "id = ".$id;
 
 //クエリの格納
 // $stmt = $pdo->prepare("select title from recmmend_table where id = 3");
 $stmt = $pdo->prepare("select title from recmmend_table where $id");
-
 //executeでクエリを実行
 $stmt->execute();
 // 結果をセット
@@ -59,6 +56,7 @@ echo $line_mes;
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
 //格納した返信をLINEに返す
-    $bot->replyText($event->getReplyToken(), $line_mes);
+    // $bot->replyText($event->getReplyToken(), $line_mes);
+    $bot->replyText($event->getReplyToken(), $event->getText());
 }
 ?>
