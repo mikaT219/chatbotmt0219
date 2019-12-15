@@ -36,6 +36,8 @@ try {
     print "接続エラー:{$e->getMessage()}";
 }
 
+$id = '';
+
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
