@@ -20,6 +20,7 @@ $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cl
 foreach ($events as $event) {
   // $id = 3;
   $id = $event->getText();
+}
   //クエリの格納
   $stmt = $pdo->prepare("select title from recmmend_table where id = $id");
   //executeでクエリを実行
@@ -27,4 +28,3 @@ foreach ($events as $event) {
   // 結果をセット
   $result = $stmt->fetch();
   echo "title = ".$result['title'].PHP_EOL;
-}
