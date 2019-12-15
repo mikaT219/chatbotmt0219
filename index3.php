@@ -40,23 +40,23 @@ try {
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   $id = $event->getText();
-}
   echo "id = ".$id;
+  // }
+  //クエリの格納
+  // $stmt = $pdo->prepare("select title from recmmend_table where id = 3");
+  $stmt = $pdo->prepare("select title from recmmend_table where $id");
+  // $stmt = $pdo->prepare("select title from recmmend_table where $event->getText()");
+  //executeでクエリを実行
+  $stmt->execute();
+  // 結果をセット
+  $result = $stmt->fetch();
+  $line_mes =  "title = ".$result['title'].PHP_EOL;
+  echo $line_mes;
 
-//クエリの格納
-// $stmt = $pdo->prepare("select title from recmmend_table where id = 3");
-$stmt = $pdo->prepare("select title from recmmend_table where $id");
-//executeでクエリを実行
-$stmt->execute();
-// 結果をセット
-$result = $stmt->fetch();
-$line_mes =  "title = ".$result['title'].PHP_EOL;
-echo $line_mes;
-
-// 配列に格納された各イベントをループで処理
-foreach ($events as $event) {
-//格納した返信をLINEに返す
-    // $bot->replyText($event->getReplyToken(), $line_mes);
-    $bot->replyText($event->getReplyToken(), $event->getText());
+  // 配列に格納された各イベントをループで処理
+  // foreach ($events as $event) {
+  //格納した返信をLINEに返す
+    $bot->replyText($event->getReplyToken(), $line_mes);
+  // $bot->replyText($event->getReplyToken(), $event->getText());
 }
 ?>
