@@ -38,21 +38,40 @@ try {
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
-    //テキストを返信し次のイベントへ
-    $id = $event->getText();
-    echo "id = ".$id;
-    $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'".$id."'"."ORDER BY rand() LIMIT 3;");
-    $stmt_test = "select title from recmmend_table where genre_feeling = $id;";
-    //executeでクエリを実行
-    $stmt->execute();
-    // 結果をセット
-    $result = $stmt->fetch();
-    $line_mes =  "title = ".$result['title'].PHP_EOL;
-    echo $line_mes;
+      $columnArray = array();
+      for ($i =0; $i<1; $i++) {
+          //アクションの配列
+          $actionArray = array();
+          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+            '映画','映画'));
+          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+            '小説','小説'));
+          array_push ($actionArray, new LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder(
+            '漫画','漫画'));
+         $column = new LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder (
+           ($i + 1).'セレクト',
+           'ジャンル',
+           'https://'.$_SERVER['HTTP_HOST'].'/imgs/template.jpg',
+           $actionArray
+         );
+          //追加
+         array_push($columnArray, $column);
+     }
+     replyCarouselTemplate($bot, $event->getReplyToken(),'ジャンル',$columnArray);
+  }
 
-    // 配列に格納された各イベントをループで処理
-    // foreach ($events as $event) {
-    //格納した返信をLINEに返す
-    $bot->replyText($event->getReplyToken(), $line_mes);
-}
+  //Carouselテンプレートを返信。引数はLINEBot、返信先、メッセージ(可変長引数)
+  //ダイアログの配列
+  function replyCarouselTemplate($bot, $replyToken, $alternativeText, $columnArray) {
+    $builder = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder(
+      $alternativeText,
+      // Carouselテンプレートの引数はダイアログの配列
+      new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder(
+        $columnArray)
+    );
+    $response = $bot->replyMessage($replyToken, $builder);
+    if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' '.$response->getRawBody());
+    }
+  }
 ?>
