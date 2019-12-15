@@ -46,6 +46,7 @@ foreach ($events as $event) {
     //クエリの格納
     // $stmt = $pdo->prepare("select title from recmmend_table where id = $id;");
     $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = $id;");
+    $stmt_test = "select title from recmmend_table where genre_feeling = $id;";
     //executeでクエリを実行
     $stmt->execute();
     // 結果をセット
@@ -58,6 +59,6 @@ foreach ($events as $event) {
     //格納した返信をLINEに返す
     // $bot->replyText($event->getReplyToken(), $line_mes);
     // $bot->replyText($event->getReplyToken(), $event->getText());
-    $bot->replyText($event->getReplyToken(), $stmt);
+    $bot->replyText($event->getReplyToken(), $stmt_test);
 }
 ?>
