@@ -7,7 +7,7 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
 // LINE Messaging APIがリクエストに付与した署名を取得
-$signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+$signature = $_SERVER['HTTP_' . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 // 署名が正当かチェック。正当であればリクエストをパースし配列へ
 // 不正であれば例外の内容を出力
 try {
@@ -38,25 +38,23 @@ try {
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
-  //テキストを返信し次のイベントへ
-  $id = $event->getText();
-  echo "id = ".$id;
-  // }
-  //クエリの格納
-  // $stmt = $pdo->prepare("select title from recmmend_table where id = 3");
-  // $stmt = $pdo->prepare("select title from recmmend_table where $id");
-  $stmt = $pdo->prepare("select title from recmmend_table where $event->getText()");
-  //executeでクエリを実行
-  $stmt->execute();
-  // 結果をセット
-  $result = $stmt->fetch();
-  $line_mes =  "title = ".$result['title'].PHP_EOL;
-  echo $line_mes;
+    //テキストを返信し次のイベントへ
+    $id = $event->getText();
+    // echo "id = ".$id;
+    // }
+    //クエリの格納
+    $stmt = $pdo->prepare("select title from recmmend_table where $id");
+    //executeでクエリを実行
+    $stmt->execute();
+    // 結果をセット
+    $result = $stmt->fetch();
+    $line_mes =  "title = ".$result['title'].PHP_EOL;
+    echo $line_mes;
 
-  // 配列に格納された各イベントをループで処理
-  // foreach ($events as $event) {
-  //格納した返信をLINEに返す
+    // 配列に格納された各イベントをループで処理
+    // foreach ($events as $event) {
+    //格納した返信をLINEに返す
     $bot->replyText($event->getReplyToken(), $line_mes);
-  // $bot->replyText($event->getReplyToken(), $event->getText());
+    // $bot->replyText($event->getReplyToken(), $event->getText());
 }
 ?>
