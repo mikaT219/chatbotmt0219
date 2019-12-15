@@ -43,7 +43,8 @@ foreach ($events as $event) {
     echo "id = ".$id;
     // }
     //クエリの格納
-    $stmt = $pdo->prepare("select title from recmmend_table where id = $id;");
+    // $stmt = $pdo->prepare("select title from recmmend_table where id = $id;");
+    $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = $id;");
     //executeでクエリを実行
     $stmt->execute();
     // 結果をセット
