@@ -9,38 +9,52 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET
 // LINE Messaging APIがリクエストに付与した署名を取得
 $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 // 署名が正当かチェック。正当であればリクエストをパースし配列へ
-$events = $bot->parseEventRequest(file_get_contents('php://input'),$signature);
-
-//ジャンルの格納
-foreach ($events as $event) {
-  // $id = 3;
-  $id = $event->getText();
+// 不正であれば例外の内容を出力
+try {
+    $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
+}
+catch(\LINE\LINEBot\Exception\InvalidSignatureException $e) {
+    error_log("parseEventRequest failed. InvalidSignatureException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
+    error_log("parseEventRequest failed. UnknownEventTypeException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
+    error_log("parseEventRequest failed. UnknownMessageTypeException => ".var_export($e, true));
+}
+catch(\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
+    error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
 
 //DB接続
-$pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
+try {
+  $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
+    $DB_connection = '接続に成功しました。';
+    print '接続に成功しました。';
+} catch ( PDOException $e ) {
+    $DB_connection = "接続エラー:{$e->getMessage()}";
+    print "接続エラー:{$e->getMessage()}";
+}
+
+// 配列に格納された各イベントをループで処理
+foreach ($events as $event) {
+  //テキストを返信し次のイベントへ
+  $id = $event->getText();
+  echo $id;
+}
+
 //クエリの格納
-$stmt = $pdo->prepare("select title from recmmend_table where id = $id");
+$stmt = $pdo->prepare("select title from recmmend_table where id = 3");
 //executeでクエリを実行
 $stmt->execute();
 // 結果をセット
 $result = $stmt->fetch();
-echo "title = ".$result['title'].PHP_EOL;
+$line_mes =  "title = ".$result['title'].PHP_EOL;
+echo $line_mes;
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
-// MessageEventクラスのインスタンスでなければ処理をスキップ
-    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-        error_log('Non message event has come');
-        continue;
-    }
-// MessageEventクラスのインスタンスでなければ処理をスキップ
-    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-        error_log('Non text message has come');
-        continue;
-    }
 //格納した返信をLINEに返す
-    $bot->replyText($event->getReplyToken(), $result);
-
+    $bot->replyText($event->getReplyToken(), $line_mes);
 }
 ?>

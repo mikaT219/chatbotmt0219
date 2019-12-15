@@ -3,7 +3,7 @@
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/connect2.php';
 // アクセストークンを使いCurlHTTPClientをインスタンス化
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(g++etenv('CHANNEL_ACCESS_TOKEN'));
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
 // LINE Messaging APIがリクエストに付与した署名を取得
@@ -14,8 +14,8 @@ $events = $bot->parseEventRequest(file_get_contents('php://input'),$signature);
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
   // replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
-  // replyTextMessage($bot, $event->getReplyToken(), $event->getText());
-  replyTextMessage($bot, $event->getReplyToken(), $result);
+  replyTextMessage($bot, $event->getReplyToken(), $event->getText());
+  // replyTextMessage($bot, $event->getReplyToken(), $result);
 }
 
 // //テキストを返信。引数はLINEBot、返信先、テキスト
