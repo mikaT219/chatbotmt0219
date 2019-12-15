@@ -13,9 +13,8 @@ $events = $bot->parseEventRequest(file_get_contents('php://input'),$signature);
 //配列に格納された各イベントをループで処理
 foreach ($events as $event) {
   //テキストを返信し次のイベントへ
-  //テスト
-  // $bot->replyText($event->getReplyToken(), 'TextMessage');
-  replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
+  // replyTextMessage($bot, $event->getReplyToken(), 'TextMessage');
+  replyTextMessage($bot, $event->getReplyToken(), $result);
 }
 
 // //テキストを返信。引数はLINEBot、返信先、テキスト
