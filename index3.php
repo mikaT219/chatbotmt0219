@@ -60,6 +60,6 @@ foreach ($events as $event) {
     //格納した返信をLINEに返す
     // $bot->replyText($event->getReplyToken(), $line_mes);
     // $bot->replyText($event->getReplyToken(), $event->getText());
-    $bot->replyText($event->getReplyToken(), $stmt_test);
+    $bot->replyText($event->getReplyToken(), $line_mes);
 }
 ?>
