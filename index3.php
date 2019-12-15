@@ -44,7 +44,9 @@ foreach ($events as $event) {
 }
 
 //クエリの格納
-$stmt = $pdo->prepare("select title from recmmend_table where id = 3");
+// $stmt = $pdo->prepare("select title from recmmend_table where id = 3");
+$stmt = $pdo->prepare("select title from recmmend_table where $id");
+
 //executeでクエリを実行
 $stmt->execute();
 // 結果をセット
