@@ -39,8 +39,8 @@ try {
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
     //テキストを返信し次のイベントへ
-    // $id = $event->getText();
-    $id = '笑える映画';
+    $id = $event->getText();
+    // $id = '笑える映画';
     echo "id = ".$id;
     // }
     //クエリの格納
