@@ -14,9 +14,12 @@ $headers = array('Content-Type: application/json',
 //テキスト応答
 // $message = array('type' => 'text',
 //                 'text' => 'こんにちは。テキスト応答ですよ。');
-$message = array('type'      => 'sticker',
-                 'packageId' => 1,
-                 'stickerId' => 1);
+// $message = array('type'      => 'sticker',
+//                  'packageId' => 1,
+//                  'stickerId' => 1);
+$message = array('type'               => 'image',
+                 'originalContentUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
+                 'previewImageUrl'    => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA');
 
 $body = json_encode(array('replyToken' => $reply_token,
                           'messages'   => array($message)));
