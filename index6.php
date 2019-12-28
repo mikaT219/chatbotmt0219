@@ -12,11 +12,11 @@ $headers = array('Content-Type: application/json',
                  'Authorization: Bearer ' . $accessToken);
 
 //テキスト応答
-$message = array('type' => 'text',
-                'text' => 'こんにちは。テキスト応答ですよ。');
-// $message = array('type'      => 'sticker',
-//                  'packageId' => 1,
-//                  'stickerId' => 1);
+// $message = array('type' => 'text',
+//                 'text' => 'こんにちは。テキスト応答ですよ。');
+$message = array('type'      => 'sticker',
+                 'packageId' => 1,
+                 'stickerId' => 1);
 
 $body = json_encode(array('replyToken' => $reply_token,
                           'messages'   => array($message)));
