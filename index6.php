@@ -1,5 +1,6 @@
 <?php
 // 受信したメッセージ情報
+require_once __DIR__.'/index5.php';
 $raw = file_get_contents('php://input');
 $receive = json_decode($raw, true);
 
