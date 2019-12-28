@@ -58,7 +58,7 @@ if($message_type != "感動する映画") {
     curl_exec($curl);
     curl_close($curl);
 
-}　else {
+} else {
 
     //返信メッセージ
     $return_message_text = "「" . $message_type.$message_text . "」じゃねーよｗｗｗ";
