@@ -65,7 +65,8 @@ if($message_text != "感動する映画") {
 
     //返信実行
     sending_messages($accessToken, $replyToken, $message_type, $return_message_text);
-
+    ?>
+    <?php
     //メッセージの送信
     function sending_messages($accessToken, $replyToken, $message_type, $return_message_text){
         //レスポンスフォーマット
