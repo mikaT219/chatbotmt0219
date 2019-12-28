@@ -14,12 +14,37 @@ $headers = array('Content-Type: application/json',
 //テキスト応答
 // $message = array('type' => 'text',
 //                 'text' => 'こんにちは。テキスト応答ですよ。');
+//スタンプ応答
 // $message = array('type'      => 'sticker',
 //                  'packageId' => 1,
 //                  'stickerId' => 1);
-$message = array('type'               => 'image',
-                 'originalContentUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
-                 'previewImageUrl'    => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA');
+//画像応答
+// $message = array('type'               => 'image',
+//                  'originalContentUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
+//                  'previewImageUrl'    => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA');
+//カルーセル応答
+$columns = array(
+                 array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
+                       'title'   => '映画',
+                       'text'    => '感動する',
+                       'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
+                 ),
+                 array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
+                       'title'   => '漫画',
+                       'text'    => '感動する',
+                       'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
+                 )
+            );
+
+$template = array('type'    => 'carousel',
+                  'columns' => $columns,
+                );
+
+$message = array('type'     => 'template',
+                 'altText'  => '代替テキスト',
+                 'template' => $template
+                );
+
 
 $body = json_encode(array('replyToken' => $reply_token,
                           'messages'   => array($message)));
