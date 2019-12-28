@@ -2,6 +2,7 @@
 // 受信したメッセージ情報
 $accessToken = 'YDD9P7LxFOm4QRxH6k6vvNL4hiJdkZPZdXGr8biDB9RXWEX/RWCBl5JmIXQF/xexMMhDHHryHDiPPyUtiHgFPf7BtaIdK2bXUGTrITBa2loTalSN1zT3JxHBNtSmAQksGy/p4gRk8oHUwlQJXKvuPwdB04t89/1O/w1cDnyilFU=';
 
+require_once __DIR__.'/index5.php';
 $raw = file_get_contents('php://input');
 $receive = json_decode($raw, true);
 
@@ -11,8 +12,12 @@ $reply_token  = $event['replyToken'];
 $headers = array('Content-Type: application/json',
                  'Authorization: Bearer ' . $accessToken);
 
-$message = array('type' => 'text',
-                'text' => 'こんにちは。テキスト応答ですよ。');
+//テキスト応答
+// $message = array('type' => 'text',
+//                 'text' => 'こんにちは。テキスト応答ですよ。');
+$message = array('type'      => 'sticker',
+                 'packageId' => 1,
+                 'stickerId' => 1);
 
 $body = json_encode(array('replyToken' => $reply_token,
                           'messages'   => array($message)));
