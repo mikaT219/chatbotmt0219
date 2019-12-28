@@ -80,7 +80,7 @@ if($message_text != "感動する映画") {
     //返信メッセージ
     // $return_message_text = "「" . $message_type.$message_text . "」じゃねーよｗｗｗ";
     // $return_message_text = $result['title'];
-    $return_message_text = "select title from recmmend_table where genre_feeling = $message_text";
+    $return_message_text = "select title from recmmend_table where genre_feeling = "."'"."$message_text"."'";
     //返信実行
     sending_messages($accessToken, $replyToken, $message_type, $return_message_text);
    }
