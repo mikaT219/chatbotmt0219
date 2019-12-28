@@ -26,7 +26,7 @@ $headers = array('Content-Type: application/json',
 $columns = array(
                  array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
                        'title'   => '映画',
-                       'text'    => '感動する',
+                       'text'    => '感動する','笑える',
                        'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => 'メッセージ'))
                  ),
                  array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
