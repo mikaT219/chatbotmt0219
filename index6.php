@@ -94,6 +94,7 @@ if($message_type != "感動する映画") {
         ));
         $result = curl_exec($ch);
         curl_close($ch);
+      }
 }
 
 ?>
