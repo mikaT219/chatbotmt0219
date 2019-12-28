@@ -26,6 +26,8 @@ function sending_messages($accessToken, $replyToken, $message_type, $return_mess
     //レスポンスフォーマット
     $response_format_text = [
         "type" => $message_type,
+
+        
         "text" => $return_message_text
     ];
 
