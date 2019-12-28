@@ -78,7 +78,7 @@ if($message_text != "感動する映画") {
 
     //返信メッセージ
     // $return_message_text = "「" . $message_type.$message_text . "」じゃねーよｗｗｗ";
-    $return_message_text = $result;
+    $return_message_text = $result['title'];
     //返信実行
     sending_messages($accessToken, $replyToken, $message_type, $return_message_text);
    }
