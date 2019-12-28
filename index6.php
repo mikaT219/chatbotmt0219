@@ -20,18 +20,18 @@ $replyToken = $json_object->{"events"}[0]->{"replyToken"};        //返信用ト
 $message_type = $json_object->{"events"}[0]->{"message"}->{"type"};    //メッセージタイプ
 $message_text = $json_object->{"events"}[0]->{"message"}->{"text"};    //メッセージ内容//テキスト応答
 
-if($message_type != "感動する映画") {
+if($message_text != "感動する映画") {
     //カルーセル応答
     $columns = array(
                      array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
                            'title'   => '映画',
                            'text'    => '感動する',
-                           'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => '感動する'))
+                           'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => '感動する映画'))
                      ),
                      array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
                            'title'   => '漫画',
                            'text'    => '感動する',
-                           'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => '感動する'))
+                           'actions' => array(array('type' => 'message', 'label' => 'ラベルです', 'text' => '感動する映画'))
                      )
                 );
 
