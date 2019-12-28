@@ -65,6 +65,7 @@ if($message_text != "感動する映画") {
 
     //返信実行
     sending_messages($accessToken, $replyToken, $message_type, $return_message_text);
+   }
     ?>
     <?php
     //メッセージの送信
@@ -96,6 +97,5 @@ if($message_text != "感動する映画") {
         $result = curl_exec($ch);
         curl_close($ch);
       }
-}
 
 ?>
