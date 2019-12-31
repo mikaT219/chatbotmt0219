@@ -20,16 +20,16 @@ if ($message->{"text"} == 'カルーセル') {
                     'title' => '映画',
                     'text' => '映画',
                      'actions' => [
-                         [
+                         // [
                             'type' => 'postback',
                              'label' => 'webhookにpost送信',
                              'data' => 'value'
-                         ],
-                         [
-                            'type' => 'uri',
-                            'label' => '美容の口コミ広場を見る',
-                             'uri' => 'http://clinic.e-kuchikomi.info/'
-                         ]
+                         // ],
+                         // [
+                         //    'type' => 'uri',
+                         //    'label' => '美容の口コミ広場を見る',
+                         //     'uri' => 'http://clinic.e-kuchikomi.info/'
+                         // ]
                     ]
                 ],
                  [
