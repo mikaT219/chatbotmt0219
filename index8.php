@@ -37,14 +37,14 @@ if ($message->{"text"} == 'カルーセル') {
                         'text' => '漫画',
                         'actions' => [
                             [
-                                'type' => 'postback',
-                                'label' => 'webhookにpost送信',
-                                'data' => 'value'
+                              'type' => 'message',
+                               'label' => '感動する漫画',
+                               'text' => '感動する漫画'
                             ],
                             [
-                                'type' => 'uri',
-                                'label' => '女美会を見る',
-                                'uri' => 'https://jobikai.com/'
+                              'type' => 'message',
+                               'label' => '笑える漫画',
+                               'text' => '笑える漫画'
                             ]
                         ]
                     ],
