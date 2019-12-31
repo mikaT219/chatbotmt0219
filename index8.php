@@ -35,7 +35,7 @@ if ($message->{"text"} == 'カルーセル') {
                                 'title' => '漫画',
                                 'text' => '漫画',
                                 'actions' => [
-                                                    ['thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
+                                                    [
                                                       'type' => 'message',
                                                        'label' => '感動する漫画',
                                                        'text' => '感動する漫画'
