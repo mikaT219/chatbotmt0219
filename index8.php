@@ -81,11 +81,13 @@ if ($message->{"text"} == 'カルーセル') {
        // 結果をセット
        $result_sql = $stmt->fetch();
        // $messageData= $stmt->fetch();
-       $messageData= $result_sql['title'];
+       $messageData= $result_sql;
 }
 
 //messagedateの送信
-$response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
+// $response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
+$response = [ 'replyToken' => $replyToken, 'messages' => [$messageData['title']] ];
+
 // }
 error_log(json_encode($response));
 
