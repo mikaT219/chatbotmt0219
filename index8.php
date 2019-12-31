@@ -6,7 +6,6 @@ $jsonString = file_get_contents('php://input'); error_log($jsonString);
 $jsonObj = json_decode($jsonString); $message = $jsonObj->{"events"}[0]->{"message"};
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
-
  // 送られてきたメッセージの中身からレスポンスのタイプを選択
 if ($message->{"text"} == 'カルーセル') {
      // カルーセルタイプ
@@ -43,8 +42,8 @@ if ($message->{"text"} == 'カルーセル') {
                                                     ],
                                                     [
                                                       'type' => 'message',
-                                                       'label' => '笑える漫画',
-                                                       'text' => '笑える漫画'
+                                                       'label' => '印象的な漫画',
+                                                       'text' => '印象的な漫画'
                                                     ]
                                               ]
                                 ],
@@ -59,8 +58,8 @@ if ($message->{"text"} == 'カルーセル') {
                                                    ],
                                                    [
                                                      'type' => 'message',
-                                                      'label' => '笑える小説',
-                                                      'text' => '笑える小説'
+                                                      'label' => '旅したい小説',
+                                                      'text' => '旅したい小説'
                                                    ]
                                              ]
                                    ],
@@ -68,25 +67,18 @@ if ($message->{"text"} == 'カルーセル') {
                   ]
               ];
  } else {
-     // それ以外は送られてきたテキストをオウム返し
-     $messageData = [ 'type' => 'text', 'text' => $message->{"text"} ];
      //DB接続
        $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
        $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'".$message->{"text"}."'");
-       // $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = '感動する漫画'");
-       // $stmt = [ 'type' => 'text', 'text' => "select title from recmmend_table where genre_feeling ="."'".$message->{"text"}."'" ];
        //executeでクエリを実行
        $stmt->execute();
        // 結果をセット
        $result_sql = $stmt->fetch();
-       // $messageData= $stmt->fetch();
-       $messageData = [ 'type' => 'text', 'text' => $result_sql['title'] ];
-       // $messageData= $result_sql['title'];
+       $messageData = [ 'type' => 'text', 'text' => $result_sql['details'] ];
 }
 
 //messagedateの送信
 $response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
-// $response = [ 'replyToken' => $replyToken, 'messages' => [$messageData['title']] ];
 
 error_log(json_encode($response));
 
