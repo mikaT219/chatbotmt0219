@@ -16,54 +16,54 @@ if ($message->{"text"} == 'カルーセル') {
         'template' => [
              'type' => 'carousel',
             'columns' => [
-                [
+                // [
                     'title' => '映画',
                     'text' => '映画',
                      'actions' => [
-                         // [
+                         [
                             'type' => 'postback',
                              'label' => 'webhookにpost送信',
                              'data' => 'value'
-                         // ],
-                         // [
-                         //    'type' => 'uri',
-                         //    'label' => '美容の口コミ広場を見る',
-                         //     'uri' => 'http://clinic.e-kuchikomi.info/'
-                         // ]
+                         ],
+                         [
+                            'type' => 'uri',
+                            'label' => '美容の口コミ広場を見る',
+                             'uri' => 'http://clinic.e-kuchikomi.info/'
+                         ]
                     ]
-                ],
-                 [
-                        'title' => '漫画',
-                        'text' => '漫画',
-                        'actions' => [
-                            [
-                                'type' => 'postback',
-                                'label' => 'webhookにpost送信',
-                                'data' => 'value'
-                            ],
-                            [
-                                'type' => 'uri',
-                                'label' => '女美会を見る',
-                                'uri' => 'https://jobikai.com/'
-                            ]
-                        ]
-                    ],
-                    [
-                           'title' => '小説',
-                           'text' => '小説',
-                           'actions' => [
-                               [
-                                   'type' => 'postback',
-                                   'label' => 'webhookにpost送信',
-                                   'data' => 'value'
-                               ],
-                               [
-                                   'type' => 'uri',
-                                   'label' => '女美会を見る',
-                                   'uri' => 'https://jobikai.com/'
-                               ]
-                           ]
-                       ],
+                // ],
+                 // [
+                 //        'title' => '漫画',
+                 //        'text' => '漫画',
+                 //        'actions' => [
+                 //            [
+                 //                'type' => 'postback',
+                 //                'label' => 'webhookにpost送信',
+                 //                'data' => 'value'
+                 //            ],
+                 //            [
+                 //                'type' => 'uri',
+                 //                'label' => '女美会を見る',
+                 //                'uri' => 'https://jobikai.com/'
+                 //            ]
+                 //        ]
+                 //    ],
+                 //    [
+                 //           'title' => '小説',
+                 //           'text' => '小説',
+                 //           'actions' => [
+                 //               [
+                 //                   'type' => 'postback',
+                 //                   'label' => 'webhookにpost送信',
+                 //                   'data' => 'value'
+                 //               ],
+                 //               [
+                 //                   'type' => 'uri',
+                 //                   'label' => '女美会を見る',
+                 //                   'uri' => 'https://jobikai.com/'
+                 //               ]
+                 //           ]
+                 //       ],
                 ]
             ]
     ];
