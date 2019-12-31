@@ -27,7 +27,7 @@ if ($message->{"text"} == 'カルーセル') {
                          ],
                          [
                            'type' => 'message',
-                            'labe1' => '笑える映画',
+                            'label' => '笑える映画',
                             'text' => '笑える映画'
                          ]
                     ]
