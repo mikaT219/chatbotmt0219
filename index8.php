@@ -73,7 +73,7 @@ if ($message->{"text"} == 'カルーセル') {
      //DB接続
        $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
        $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'".$message->{"text"}."'");
-       $messageData = [ 'type' => 'text', 'text' => $message->{"text"} ."select title from recmmend_table where genre_feeling ="];
+       $messageData = [ 'type' => 'text', 'text' => "select title from recmmend_table where genre_feeling =".$message->{"text"} ];
        // $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = '感動する映画'");
        // //executeでクエリを実行
        // $stmt->execute();
