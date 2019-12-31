@@ -85,10 +85,9 @@ if ($message->{"text"} == 'カルーセル') {
 }
 
 //messagedateの送信
-// $response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
-$response = [ 'replyToken' => $replyToken, 'messages' => [$messageData['title']] ];
+$response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
+// $response = [ 'replyToken' => $replyToken, 'messages' => [$messageData['title']] ];
 
-// }
 error_log(json_encode($response));
 
 //curl実行
