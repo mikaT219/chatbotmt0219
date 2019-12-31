@@ -78,7 +78,7 @@ if ($message->{"text"} == 'カルーセル') {
        $stmt->execute();
        // // 結果をセット
        // // $result = $stmt->fetch();
-       $messageData= $stmt->fetch();
+       $messageData= $stmt;
 }
 
 //messagedateの送信
