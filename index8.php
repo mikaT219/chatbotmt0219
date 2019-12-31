@@ -8,42 +8,7 @@ $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
 
  // 送られてきたメッセージの中身からレスポンスのタイプを選択
-if ($message->{"text"} == '確認') {
-     // 確認ダイアログタイプ
-    $messageData = [
-        'type' => 'template',
-        'altText' => '確認ダイアログ',
-        'template' => [ 'type' => 'confirm', 'text' => '元気ですかー？',
-            'actions' => [
-                [ 'type' => 'message', 'label' => '元気です', 'text' => '元気です' ],
-                [ 'type' => 'message', 'label' => 'まあまあです', 'text' => 'まあまあです' ],
-            ]
-        ]
- ];
-} elseif ($message->{"text"} == 'ボタン') {
-    // ボタンタイプ
-    $messageData = [
-        'type' => 'template',
-         'altText' => 'ボタン',
-        'template' => [
-             'type' => 'buttons',
-             'title' => 'タイトルです',
-             'text' => '選択してね',
-            'actions' => [
-                 [
-                    'type' => 'postback',
-                    'label' => 'webhookにpost送信',
-                    'data' => 'value'
-                ],
-                 [
-                     'type' => 'uri',
-                     'label' => 'googleへ移動',
-                     'uri' => 'https://google.com'
-                 ]
-              ]
-          ]
-     ];
-} elseif ($message->{"text"} == 'カルーセル') {
+if ($message->{"text"} == 'カルーセル') {
      // カルーセルタイプ
     $messageData = [
         'type' => 'template',
