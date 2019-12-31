@@ -76,11 +76,11 @@ if ($message->{"text"} == 'カルーセル') {
        $messageData = [ 'type' => 'text', 'text' => "select title from recmmend_table where genre_feeling =".$message->{"text"} ];
        // $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = '感動する映画'");
        //executeでクエリを実行
-       $stmt->execute();
+       // $stmt->execute();
        // 結果をセット
        // $result = $stmt->fetch();
-       $messageData= $stmt->fetch();
-       $messageData= $messageData['title'];
+       // $messageData= $stmt->fetch();
+       // $messageData= $messageData['title'];
 }
 
 //messagedateの送信
