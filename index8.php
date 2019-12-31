@@ -81,7 +81,8 @@ if ($message->{"text"} == 'カルーセル') {
        // 結果をセット
        $result_sql = $stmt->fetch();
        // $messageData= $stmt->fetch();
-       $messageData= $result_sql['title'];
+       $messageData = [ 'type' => 'text', 'text' => $result_sql['title'] ];
+       // $messageData= $result_sql['title'];
 }
 
 //messagedateの送信
