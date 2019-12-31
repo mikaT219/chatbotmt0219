@@ -83,6 +83,22 @@ if ($message->{"text"} == '確認') {
                             ]
                         ]
                     ],
+                    [
+                           'title' => 'カルーセル3',
+                           'text' => 'カルーセル3です',
+                           'actions' => [
+                               [
+                                   'type' => 'postback',
+                                   'label' => 'webhookにpost送信',
+                                   'data' => 'value'
+                               ],
+                               [
+                                   'type' => 'uri',
+                                   'label' => '女美会を見る',
+                                   'uri' => 'https://jobikai.com/'
+                               ]
+                           ]
+                       ],
                 ]
             ]
     ];
