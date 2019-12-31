@@ -69,16 +69,49 @@ if ($message->{"text"} == 'カルーセル') {
     ];
  } else {
      // それ以外は送られてきたテキストをオウム返し
-     $messageData = [ 'type' => 'text', 'text' => $message->{"text"} ];
-}
-$response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
-error_log(json_encode($response));
-$ch = curl_init('https://api.line.me/v2/bot/message/reply');
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response));
-curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json; charser=UTF-8', 'Authorization: Bearer ' . $accessToken ));
-$result = curl_exec($ch); error_log($result);
-curl_close($ch);
-?>
+     // $messageData = [ 'type' => 'text', 'text' => $message->{"text"} ];
+     //DB接続
+       $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
+         // $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'"."$message_text"."'");
+        $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = $message->{"text"});
+         //executeでクエリを実行
+         $stmt->execute();
+         // 結果をセット
+         $result = $stmt->fetch();
+
+       //返信メッセージ
+        $return_message_text = $result['title'];
+       //返信実行
+       sending_messages($accessToken, $replyToken, $message_type, $return_message_text);
+      }
+       ?>
+       <?php
+       //メッセージの送信
+       function sending_messages($accessToken, $replyToken, $message_type, $return_message_text){
+           //レスポンスフォーマット
+           $response_format_text = [
+               "type" => $message_type,
+
+               "text" => $return_message_text
+           ];
+
+           //ポストデータ
+           $post_data = [
+               "replyToken" => $replyToken,
+               "messages" => [$response_format_text]
+           ];
+
+           //curl実行
+           $ch = curl_init("https://api.line.me/v2/bot/message/reply");
+           curl_setopt($ch, CURLOPT_POST, true);
+           curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+           curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+           curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+               'Content-Type: application/json; charser=UTF-8',
+               'Authorization: Bearer ' . $accessToken
+           ));
+           $result = curl_exec($ch);
+           curl_close($ch);
+         }
+   ?>
