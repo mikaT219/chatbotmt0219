@@ -26,9 +26,9 @@ if ($message->{"text"} == 'カルーセル') {
                              'text' => '感動する映画'
                          ],
                          [
-                           'type' => 'message',
-                            'label' => '笑える映画',
-                            'text' => '笑える映画'
+                            'type' => 'uri',
+                            'label' => '美容の口コミ広場を見る',
+                             'uri' => 'http://clinic.e-kuchikomi.info/'
                          ]
                     ]
                 ],
@@ -37,33 +37,33 @@ if ($message->{"text"} == 'カルーセル') {
                         'text' => '漫画',
                         'actions' => [
                             [
-                              'type' => 'message',
-                               'label' => '感動する漫画',
-                               'text' => '感動する漫画'
+                                'type' => 'postback',
+                                'label' => 'webhookにpost送信',
+                                'data' => 'value'
                             ],
                             [
-                              'type' => 'message',
-                               'label' => '笑える漫画',
-                               'text' => '笑える漫画'
+                                'type' => 'uri',
+                                'label' => '女美会を見る',
+                                'uri' => 'https://jobikai.com/'
                             ]
                         ]
                     ],
-                    [
-                           'title' => '小説',
-                           'text' => '小説',
-                           'actions' => [
-                               [
-                                   'type' => 'postback',
-                                   'label' => '感動する小説',
-                                   'text' => '感動する小説'
-                               ],
-                               [
-                                 'type' => 'message',
-                                  'label' => '笑える小説',
-                                  'text' => '笑える小説'
-                               ]
-                           ]
-                       ],
+                    // [
+                    //        'title' => '小説',
+                    //        'text' => '小説',
+                    //        'actions' => [
+                    //            [
+                    //                'type' => 'postback',
+                    //                'label' => 'webhookにpost送信',
+                    //                'data' => 'value'
+                    //            ],
+                    //            [
+                    //                'type' => 'uri',
+                    //                'label' => '女美会を見る',
+                    //                'uri' => 'https://jobikai.com/'
+                    //            ]
+                    //        ]
+                    //    ],
                 ]
             ]
     ];
