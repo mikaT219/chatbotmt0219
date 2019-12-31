@@ -82,11 +82,11 @@ if ($message->{"text"} == 'カルーセル') {
        $result = $stmt->fetch();
        // $messageData= $stmt->fetch();
        $messageData= $result['title'];
-// }
+}
 
 //messagedateの送信
 $response = [ 'replyToken' => $replyToken, 'messages' => [$messageData] ];
-}
+// }
 error_log(json_encode($response));
 
 //curl実行
