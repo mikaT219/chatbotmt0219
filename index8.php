@@ -52,8 +52,8 @@ if ($message->{"text"} == '確認') {
              'type' => 'carousel',
             'columns' => [
                 [
-                    'title' => 'カルーセル1',
-                    'text' => 'カルーセル1です',
+                    'title' => '感動する映画',
+                    'text' => '感動する映画',
                      'actions' => [
                          [
                             'type' => 'postback',
@@ -68,17 +68,17 @@ if ($message->{"text"} == '確認') {
                     ]
                 ],
                  [
-                        'title' => 'カルーセル2',
-                        'text' => 'カルーセル2です',
+                        'title' => '感動する漫画',
+                        'text' => '感動する漫画',
                         'actions' => [
                             [
-                                'type' => 'postback',
-                                'label' => 'webhookにpost送信',
+                                'type' => 'text',
+                                'label' => '感動する映画',
                                 'data' => 'value'
                             ],
                             [
-                                'type' => 'uri',
-                                'label' => '女美会を見る',
+                                'type' => 'text',
+                                'label' => '笑える映画', 
                                 'uri' => 'https://jobikai.com/'
                             ]
                         ]
