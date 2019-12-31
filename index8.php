@@ -69,7 +69,7 @@ if ($message->{"text"} == 'カルーセル') {
  } else {
      //DB接続
        $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
-       $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'".$message->{"text"}."'");
+       $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'".$message->{"text"}."'"."ORDER BY rand() LIMIT 3;");
        //executeでクエリを実行
        $stmt->execute();
        // 結果をセット
