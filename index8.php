@@ -70,6 +70,12 @@ if ($message->{"text"} == 'カルーセル') {
  } else {
      // それ以外は送られてきたテキストをオウム返し
      $messageData = [ 'type' => 'text', 'text' => $message->{"text"} ];
+     $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
+       $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = ".$message->{"text"});
+       //executeでクエリを実行
+       $stmt->execute();
+       // 結果をセット
+       $result = $stmt->fetch();
 }
 
 //messagedateの送信
