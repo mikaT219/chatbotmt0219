@@ -21,8 +21,9 @@ if ($message->{"text"} == 'カルーセル') {
                     'text' => '映画',
                      'actions' => [
                          [
-                            'type' => 'text',
-                             'label' => '感動する映画'
+                            'type' => 'postback',
+                             'label' => 'webhookにpost送信',
+                             'data' => 'value'
                          ],
                          [
                             'type' => 'uri',
