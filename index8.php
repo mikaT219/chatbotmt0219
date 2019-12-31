@@ -26,9 +26,9 @@ if ($message->{"text"} == 'カルーセル') {
                              'text' => '感動する映画'
                          ],
                          [
-                            'type' => 'uri',
-                            'label' => '美容の口コミ広場を見る',
-                             'uri' => 'http://clinic.e-kuchikomi.info/'
+                           'type' => 'message',
+                            'label' => '笑える映画',
+                            'text' => '笑える映画'
                          ]
                     ]
                 ],
