@@ -16,57 +16,57 @@ if ($message->{"text"} == 'カルーセル') {
         'template' => [
              'type' => 'carousel',
             'columns' => [
-                [
-                    'title' => '映画',
-                    'text' => '映画',
-                     'actions' => [
-                         [
-                            'type' => 'message',
-                             'label' => '感動する映画',
-                             'text' => '感動する映画'
-                         ],
-                         [
-                           'type' => 'message',
-                            'label' => '笑える映画',
-                            'text' => '笑える映画'
-                         ]
-                    ]
-                ],
-                 [
-                        'title' => '漫画',
-                        'text' => '漫画',
-                        'actions' => [
-                            [
-                              'type' => 'message',
-                               'label' => '感動する漫画',
-                               'text' => '感動する漫画'
-                            ],
-                            [
-                              'type' => 'message',
-                               'label' => '笑える漫画',
-                               'text' => '笑える漫画'
-                            ]
+                              [
+                                'title' => '映画',
+                                'text' => '映画',
+                                 'actions' => [
+                                                   [
+                                                      'type' => 'message',
+                                                       'label' => '感動する映画',
+                                                       'text' => '感動する映画'
+                                                   ],
+                                                   [
+                                                     'type' => 'message',
+                                                      'label' => '笑える映画',
+                                                      'text' => '笑える映画'
+                                                   ]
+                                              ]
+                              ],
+                              [
+                                'title' => '漫画',
+                                'text' => '漫画',
+                                'actions' => [
+                                                    [
+                                                      'type' => 'message',
+                                                       'label' => '感動する漫画',
+                                                       'text' => '感動する漫画'
+                                                    ],
+                                                    [
+                                                      'type' => 'message',
+                                                       'label' => '笑える漫画',
+                                                       'text' => '笑える漫画'
+                                                    ]
+                                              ]
+                                ],
+                                [
+                                 'title' => '小説',
+                                 'text' => '小説',
+                                 'actions' => [
+                                                   [
+                                                     'type' => 'message',
+                                                      'label' => '感動する小説',
+                                                      'text' => '感動する小説'
+                                                   ],
+                                                   [
+                                                     'type' => 'message',
+                                                      'label' => '笑える小説',
+                                                      'text' => '笑える小説'
+                                                   ]
+                                             ]
+                                   ],
                         ]
-                    ],
-                    // [
-                    //        'title' => '小説',
-                    //        'text' => '小説',
-                    //        'actions' => [
-                    //            [
-                    //                'type' => 'postback',
-                    //                'label' => 'webhookにpost送信',
-                    //                'data' => 'value'
-                    //            ],
-                    //            [
-                    //                'type' => 'uri',
-                    //                'label' => '女美会を見る',
-                    //                'uri' => 'https://jobikai.com/'
-                    //            ]
-                    //        ]
-                    //    ],
-                ]
-            ]
-    ];
+                  ]
+              ];
  } else {
      // それ以外は送られてきたテキストをオウム返し
      $messageData = [ 'type' => 'text', 'text' => $message->{"text"} ];
