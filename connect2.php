@@ -18,7 +18,6 @@ $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cl
 
 //ジャンルの格納
 foreach ($events as $event) {
-  // $id = 3;
   $id = $event->getText();
 }
   //クエリの格納

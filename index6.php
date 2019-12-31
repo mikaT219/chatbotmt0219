@@ -61,26 +61,14 @@ if($message_text != "感動する映画") {
 } else {
   //DB接続
     $pdo = new PDO("mysql:dbname=heroku_1ac9c94b4480f8f;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8","bef176e47e8f17","d24f08d0");
-
-    //ジャンルの格納
-    // foreach ($events as $event) {
-      //$id = $event->getText();
-    // }
-      //クエリの格納
-//      $stmt = $pdo->prepare("select title from recmmend_table where id = $id");
-      // $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = '感動する映画'");
       $stmt = $pdo->prepare("select title from recmmend_table where genre_feeling = "."'"."$message_text"."'");
-
       //executeでクエリを実行
       $stmt->execute();
       // 結果をセット
       $result = $stmt->fetch();
-      echo "title = ".$result['title'].PHP_EOL;
 
     //返信メッセージ
-    // $return_message_text = "「" . $message_type.$message_text . "」じゃねーよｗｗｗ";
      $return_message_text = $result['title'];
-    // $return_message_text = "select title from recmmend_table where genre_feeling = "."'"."$message_text"."'";
     //返信実行
     sending_messages($accessToken, $replyToken, $message_type, $return_message_text);
    }
@@ -91,7 +79,6 @@ if($message_text != "感動する映画") {
         //レスポンスフォーマット
         $response_format_text = [
             "type" => $message_type,
-
 
             "text" => $return_message_text
         ];
@@ -115,5 +102,4 @@ if($message_text != "感動する映画") {
         $result = curl_exec($ch);
         curl_close($ch);
       }
-
 ?>

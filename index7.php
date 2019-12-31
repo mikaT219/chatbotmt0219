@@ -11,17 +11,6 @@ $reply_token  = $event['replyToken'];
 $headers = array('Content-Type: application/json',
                  'Authorization: Bearer ' . $accessToken);
 
-//テキスト応答
-// $message = array('type' => 'text',
-//                 'text' => 'こんにちは。テキスト応答ですよ。');
-//スタンプ応答
-// $message = array('type'      => 'sticker',
-//                  'packageId' => 1,
-//                  'stickerId' => 1);
-//画像応答
-// $message = array('type'               => 'image',
-//                  'originalContentUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
-//                  'previewImageUrl'    => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA');
 //カルーセル応答
 $columns = array(
                  array('thumbnailImageUrl' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQR4kVP0EtyH3o8WqrXed5tPc8KY3kRL7Tj55MDPPIkgw3EoQl7t06EER6VA',
