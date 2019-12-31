@@ -17,13 +17,12 @@ if ($message->{"text"} == 'カルーセル') {
              'type' => 'carousel',
             'columns' => [
                 [
-                    'title' => 'カルーセル1',
-                    'text' => 'カルーセル1です',
+                    'title' => '映画',
+                    'text' => '映画',
                      'actions' => [
                          [
-                            'type' => 'postback',
-                             'label' => 'webhookにpost送信',
-                             'data' => 'value'
+                            'type' => 'text',
+                             'label' => '感動する映画'
                          ],
                          [
                             'type' => 'uri',
@@ -33,8 +32,8 @@ if ($message->{"text"} == 'カルーセル') {
                     ]
                 ],
                  [
-                        'title' => 'カルーセル2',
-                        'text' => 'カルーセル2です',
+                        'title' => '漫画',
+                        'text' => '漫画',
                         'actions' => [
                             [
                                 'type' => 'postback',
@@ -49,8 +48,8 @@ if ($message->{"text"} == 'カルーセル') {
                         ]
                     ],
                     [
-                           'title' => 'カルーセル3',
-                           'text' => 'カルーセル3です',
+                           'title' => '小説',
+                           'text' => '小説',
                            'actions' => [
                                [
                                    'type' => 'postback',
